@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+	<%= Site.meta_tags %>
+	<title><%= $page_title + ' // ' unless $page_title.blank? || $page_title.nil? %><%= Site.site_name %></title>
+	
+</head>
+<body>
+	<%= @current_person.inspect %>
+	<%= yield %>
+	<div id="nav">
+		<ul>
+			<li>
+				<%= link_to 'Archives', posts_path('posts') %>
+			</li>
+			<li>Pages?
+				<%# link_to 'Pages', pages_path('pages') %>
+			</li>
+			<li>
+			<%= link_to_if @current_person.nil?, 'Sign in', login_path  do
+					link_to 'Sign out', logout_path
+				end %>
+			</li>
+			<li>
+				<%= link_to 'Admin', admin_home_path %>
+			</li>
+		</ul>
+	</div> <!-- /nav -->
+</body>
+</html>

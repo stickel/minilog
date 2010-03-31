@@ -1,0 +1,59 @@
+<%- field_set_tag 'Site settings' do -%>
+	<p><%= f.label :domain, @prefs['domain']['title'] %>
+		<%= text_field_tag 'preferences[domain]', @prefs['domain']['value']  %>
+		<span class="help"><%= @prefs['domain']['description'] %></span>
+	</p>
+	<p><%= f.label :site_name, @prefs['site_name']['title'] %>
+		<%= text_field_tag 'preferences[site_name]', @prefs['site_name']['value'] %>
+		<span class="help"><%= @prefs['site_name']['description'] %></span>
+	</p>
+	<p><%= f.label :slogan, @prefs['slogan']['title'] %>
+		<%= text_field_tag 'preferences[slogan]', @prefs['slogan']['value'] %>
+		<span class="help"><%= @prefs['slogan']['description'] %></span>
+	</p>
+	<p><%= f.label :site_description, @prefs['site_description']['title'] %>
+		<%= text_field_tag 'preferences[site_description]', @prefs['site_description']['value'] %>
+		<span class="help"><%= @prefs['site_description']['description'] %></span>
+	</p>
+	<p><%= f.label :owner_name, @prefs['owner_name']['title'] %>
+		<%= text_field_tag 'preferences[owner_name]', @prefs['owner_name']['value'] %>
+		<span class="help"><%= @prefs['owner_name']['description'] %></span>
+	</p>
+	<p><%= f.label :owner_email, @prefs['owner_email']['title'] %>
+		<%= text_field_tag 'preferences[owner_email]', @prefs['owner_email']['value'] %>
+		<span class="help"><%= @prefs['owner_email']['description'] %></span>
+	</p>
+<%- end -%>
+<%- field_set_tag 'Advanced options' do -%>
+	<p><%= f.label :items_on_index, @prefs['items_on_index']['title'] %>
+		<%= text_field_tag 'preferences[items_on_index]', @prefs['items_on_index']['value'] %>
+		<span class="help"><%= @prefs['items_on_index']['description'] %></span>
+	</p>
+	<p><%= f.label :items_in_feed, @prefs['items_in_feed']['title'] %>
+		<%= text_field_tag 'preferences[items_in_feed]', @prefs['items_in_feed']['value'] %>
+		<span class="help"><%= @prefs['items_in_feed']['description'] %></span>
+	</p>
+	<p><%= f.label :timezone, @prefs['timezone']['title'] %>
+		<%# text_field_tag 'preferences[timezone]', @prefs['timezone']['value'] %>
+		<%= time_zone_select 'preferences', 'timezone', nil, :default => @prefs['timezone']['value'] %>
+		<span class="help"><%= @prefs['timezone']['description'] %></span>
+		<%= @prefs['timezone']['value'] %>
+	</p>
+	<p><%= f.label :time_format, @prefs['time_format']['title'] %>
+		<%= text_field_tag 'preferences[time_format]', @prefs['time_format']['value'] %>
+		<span class="help"><%= @prefs['time_format']['description'] %></span>
+	</p>
+	<p><%= f.label :language, @prefs['language']['title'] %>
+		<%= text_field_tag 'preferences[language]', @prefs['language']['value'] %>
+		<span class="help"><%= @prefs['language']['description'] %></span>
+	</p>
+	<p><%= f.label :metrics, @prefs['metrics']['title'] %>
+		<%= f.text_area :metrics, :value => @prefs['metrics']['value'] %>
+		<span class="help"><%= @prefs['metrics']['description'] %></span>
+	</p>
+<%- end -%>
+<%- field_set_tag nil, :class => 'buttons' do -%>
+	<button value="Save changes" type="submit" name="save" id="save">
+		Save changes
+	</button>
+<%- end -%>

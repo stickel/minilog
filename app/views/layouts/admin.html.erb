@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+	<%= Site.meta_tags %>
+	<title><%= $page_title + ' // ' unless $page_title.blank? || $page_title.nil? %><%= Site.site_name %></title>
+	
+</head>
+<body>
+	<%= yield %>
+</body>
+</html>

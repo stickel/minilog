@@ -1,0 +1,38 @@
+== Requirements
+ * AASM
+ * Restful Authentication
+ * Bluecloth
+ * Redcloth
+ * TwitterGem
+
+== TODO:
+ * Install scripts
+ * 
+
+== Preferences for:
+ * site name
+ * site URL
+ * tagline/slogan
+ * description
+ * posts on index
+ * items in feed
+ * time zone
+ * language?
+ * metrics
+ * time/date format?
+
+==== Posts
+ * comments on/off
+ * images
+ * tags
+ * make featured/sticky
+ * 
+
+==== Comments
+
+== Store
+ * ¿optional? ¿preference?
+
+==== Products
+ * marketing pages
+ * buy pages
