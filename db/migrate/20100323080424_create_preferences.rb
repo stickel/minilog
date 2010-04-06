@@ -20,6 +20,7 @@ class CreatePreferences < ActiveRecord::Migration
     Preference.new(:title => 'Language code',:name => 'language',:description => 'What language is this site?',:value => 'en-us').save
     Preference.new(:title => 'Metrics code',:name => 'metrics',:description => 'Add your site metrics code',:value => '').save
     Preference.new(:title => 'Time/Date format',:name => 'time_format',:description => 'How would you like the time displayed?',:value => '%B %d, %Y').save
+    Preference.new(:title => 'Archive path name',:name => 'archive_path_name',:description => 'Choose a name for your archives',:value => 'archives').save
     
   end
 

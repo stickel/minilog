@@ -33,6 +33,12 @@
 		<%= text_field_tag 'preferences[items_in_feed]', @prefs['items_in_feed']['value'] %>
 		<span class="help"><%= @prefs['items_in_feed']['description'] %></span>
 	</p>
+	<p><%= f.label :archive_path_name, @prefs['archive_path_name']['title'] %>
+		<select name="preferences[archive_path_name]">
+		<%= options_for_select({'Archives' => 'archives', 'Past' => 'past', 'Posts' => 'posts', 'Older' => 'older', 'Notes' => 'notes'}, :selected => @prefs['archive_path_name']['value']) %>
+		</select>
+		<span class="help"><%= @prefs['archive_path_name']['description'] %></span>
+	</p>
 	<p><%= f.label :timezone, @prefs['timezone']['title'] %>
 		<%# text_field_tag 'preferences[timezone]', @prefs['timezone']['value'] %>
 		<%= time_zone_select 'preferences', 'timezone', nil, :default => @prefs['timezone']['value'] %>

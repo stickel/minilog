@@ -3,7 +3,7 @@ class Admin::BaseController < ApplicationController
   before_filter :login_required
   
   def index
-    $page_title = 'Admin'
+    $page_title = 'Administration'
   end
   
   protected

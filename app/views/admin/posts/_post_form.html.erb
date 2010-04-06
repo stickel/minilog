@@ -1,0 +1,28 @@
+<%- field_set_tag do -%>
+	<p><%= f.label :title, "Title" %>
+		<%= f.text_field :title %>
+	</p>
+	<p><%= f.label :permalink, "Permalink" %>
+		<%= f.text_field :permalink %>
+	</p>
+	<p><%= f.label :body_raw, "Post" %>
+		<%= f.text_area :body_raw %>
+	</p>
+	<p><%= label_tag :tags, "Tags" %>
+		<%= text_field_tag :tags, (@tags || '') %>
+		<span class="help">Separate tags with commas: personal, food, internet</span>
+	</p>
+<%- end -%>
+<%- field_set_tag do 'Options' -%>
+	<p><%= f.label :summary, "Summary" %>
+		<%= f.text_area :summary, :rows => 5 %>
+	</p>
+	<p><%= f.label :published_at, "Publish time" %>
+		<%= f.text_field :published_at %>
+	</p>
+	<p><%= f.check_box :is_active, :checked => true %> <%= f.label :is_active, "Make this post active", :class => 'with_checkbox' %></p>
+	<p><%= f.check_box :comment_status %> <%= f.label :comment_status, "Allow comments", :class => 'with_checkbox' %></p>
+<%- end -%>
+<%- field_set_tag do -%>
+	<%= f.submit "Save" %>
+<%- end -%>

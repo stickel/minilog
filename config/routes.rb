@@ -3,10 +3,6 @@ ActionController::Routing::Routes.draw do |map|
   # index
   map.home '', :controller => 'posts', :action => 'list'
   
-  # permalink
-  map.post ':archive_token/:permalink', :controller => 'posts', :action => 'show',
-                    :archive_token => tokens
-  
   # archives by author
   map.posts_authors ':archive_token/authors/:id', :controller => 'posts', :action => 'by_author',
                     :archive_token => tokens
@@ -26,8 +22,12 @@ ActionController::Routing::Routes.draw do |map|
   # archive
   map.posts ':archive_token', :controller => 'posts', :action => 'archive', :archive_token => tokens
   
-  # tags
+  # permalink
+  map.post ':archive_token/:permalink', :controller => 'posts', :action => 'show',
+                    :archive_token => tokens
   
+  # tags
+  map.tags 'tagged/:tag', :controller => 'tags', :action => 'list'
   
   # comments
   map.connect 'comments/add', :controller => 'posts', :action => 'add_comment'
@@ -42,8 +42,8 @@ ActionController::Routing::Routes.draw do |map|
   # authentication
   map.logout '/signout', :controller => 'sessions', :action => 'destroy'
   map.login '/signin', :controller => 'sessions', :action => 'new'
-  map.register '/register', :controller => 'peoples', :action => 'create'
-  map.signup '/signup', :controller => 'peoples', :action => 'new'
+  map.register '/register', :controller => 'people', :action => 'create'
+  map.signup '/signup', :controller => 'people', :action => 'new'
   map.resources :people, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.resource :session
   
@@ -52,8 +52,8 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
     admin.home '', :controller => 'base', :action => 'index'
     admin.preferences 'preferences', :controller => 'preferences', :action => 'index'
-    admin.posts 'posts', :controller => 'posts', :action => 'list'
-    admin.pages 'pages', :controller => 'pages', :action => 'list'
+    admin.resources :posts
+    admin.resources :pages
   end
   
   # default routes

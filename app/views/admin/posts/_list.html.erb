@@ -1,0 +1,11 @@
+<ul>
+	<%- posts.each do |p| -%>
+	<li>
+		<%= p.published_at.to_s(:digits_reverse) %>
+		<%= p.title %>
+		<%= p.person %>
+		<%# p.comments.size %>
+		<%= "Published" if p.is_active? %>
+	</li>
+	<%- end -%>
+</ul>

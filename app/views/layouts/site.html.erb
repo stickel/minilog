@@ -6,21 +6,16 @@
 	
 </head>
 <body>
-	<%= @current_person.inspect %>
 	<%= yield %>
 	<div id="nav">
 		<ul>
 			<li>
-				<%= link_to 'Archives', posts_path('posts') %>
+				<%= link_to 'Archives', posts_path(Site.archive_path) %>
 			</li>
 			<li>Pages?
 				<%# link_to 'Pages', pages_path('pages') %>
 			</li>
-			<li>
-			<%= link_to_if @current_person.nil?, 'Sign in', login_path  do
-					link_to 'Sign out', logout_path
-				end %>
-			</li>
+			<li><%= sign_in_out_link(current_person) %></li>
 			<li>
 				<%= link_to 'Admin', admin_home_path %>
 			</li>

@@ -2,5 +2,12 @@
 
 	<h2><%= @posts.title %></h2>
 	<%= @posts.body %>
-
+	
+	<h4>Tags</h4>
+	<p><%= tags_as_sentence(@posts.tags) %></p>
+	<%- if current_person && logged_in? -%>
+	<p><%= link_to 'Edit this post', edit_admin_post_path(@posts.id) %></p>
+	<%- else -%>
+	<p>Not logged in</p>
+	<%- end -%>
 <%= render :partial => 'layouts/footer' %>

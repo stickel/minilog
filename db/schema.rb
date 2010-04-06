@@ -66,6 +66,11 @@ ActiveRecord::Schema.define(:version => 20100323080424) do
     t.datetime "updated_at"
   end
 
+  create_table "posts_tags", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+  end
+
   create_table "preferences", :force => true do |t|
     t.string "title",       :null => false
     t.string "name",        :null => false
@@ -75,11 +80,6 @@ ActiveRecord::Schema.define(:version => 20100323080424) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "tags_posts", :id => false, :force => true do |t|
-    t.integer "tag_id"
-    t.integer "post_id"
   end
 
 end

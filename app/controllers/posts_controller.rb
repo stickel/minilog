@@ -13,18 +13,26 @@ class PostsController < ApplicationController
   end
   
   def archive
-    
+    $page_title = 'Archived posts'
+    @posts = Post.recent(Preference.get_pref('items_on_index'))
+    @archive_years = Post.years
   end
   
   def by_day
-    
+    $page_title = "Archived posts for #{Site.nice_month(params[:month])} #{params[:day]}"
+    @posts = Post.recent(Preference.get_pref('items_on_index'))
+    @archive_years = Post.years
   end
   
   def by_month
-    
+    $page_title = "Archived posts for #{Site.nice_month(params[:month])}"
+    @posts = Post.recent(Preference.get_pref('items_on_index'))
+    @archive_years = Post.years
   end
   
   def by_year
-    
+    $page_title = "Archived posts for #{params[:year]}"
+    @posts = Post.recent(Preference.get_pref('items_on_index'))
+    @archive_years = Post.years
   end
 end

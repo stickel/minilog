@@ -15,6 +15,7 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
   config.active_record.observers = :person_observer
+  config.gem 'bluecloth', :version => '>= 2.0.0'
 end
 
 ActionMailer::Base.delivery_method = :smtp
