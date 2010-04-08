@@ -13,7 +13,7 @@
 		<span class="help">Separate tags with commas: personal, food, internet</span>
 	</p>
 <%- end -%>
-<%- field_set_tag do 'Options' -%>
+<%- field_set_tag 'Options', :class => 'border' do -%>
 	<p><%= f.label :summary, "Summary" %>
 		<%= f.text_area :summary, :rows => 5 %>
 	</p>

@@ -2,7 +2,6 @@
 # Likewise, all the methods added will be available for all controllers.
 
 require 'preference'
-# require 'rubygems'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details

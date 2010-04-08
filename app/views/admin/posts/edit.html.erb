@@ -1,5 +1,4 @@
 <%= render :partial => 'admin/base/header' %>
-<%= "Return path: #{@return_path}" %>
 	<%- form_for :post, :url => admin_post_path(@post), :html => {:method => :put, :multipart => true} do |f| -%>
 	<%= render :partial => 'admin/posts/post_form', :locals => {:f => f} %>
 	<%= hidden_field_tag 'return_path', @return_path %>

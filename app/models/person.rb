@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   include Authorization::AasmRoles
+  has_many :posts
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -25,7 +26,6 @@ class Person < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
-
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

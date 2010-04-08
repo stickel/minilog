@@ -3,7 +3,7 @@
 <head>
 	<%= Site.meta_tags %>
 	<title><%= $page_title + ' // ' unless $page_title.blank? || $page_title.nil? %><%= Site.site_name %></title>
-	
+	<%= stylesheet_link_tag 'minilog' %>
 </head>
 <body>
 	<%= yield %>

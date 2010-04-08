@@ -1,0 +1,32 @@
+/* Modified Reset v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe, 
+article, section, nav, aside, header, footer,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td { background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
+body { font-size: 12px; font-family: Helvetica, Arial, sans-serif; line-height: 1.5; margin: 0 auto; min-width: 800px; width: 80%; max-width: 1000px; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+/* remember to define focus styles! */
+:focus { outline: 0; }
+:active { }
+
+/* remember to highlight inserts somehow! */
+ins { background: yellow; text-decoration: none; }
+del { color: #333; color: rgba(0,0,0,0.4); text-decoration: line-through; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* type */
+h1		{ font-size: 200%; line-height: 1.2; padding: 0.75em 0 0.25em; }
+h2		{ font-size: 160%; line-height: 1.3; padding: 0.6em 0 0.2em; }
+p			{ padding-bottom: 1.5em; }
+
+#main { padding: 0 0 2em; }

@@ -1,0 +1,28 @@
+/* admin nav */
+nav, #nav, .nav_item { display: inline-block; margin: 0; }
+nav .nav_item a, #nav .nav_item a	{ border: 1px solid #e5e5e5; border-width: 1px 1px 0; color: #08c; display: block; line-height: 2; padding: 2px 10px; text-decoration: none;
+		-webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; 
+	}
+
+
+#main { border-top: 1px solid #e5e5e5; padding-top: 1.5em; }
+#main .help { color: #ddd; color: rgba(30,30,30,0.8); display: block; font-size: 80%; margin-left: 21%; }
+
+/* post form */
+form fieldset.border { border-top: 1px solid #ddd; }
+form fieldset { padding-top: 1em; }
+form legend { background: #fff; font-size: 120%; font-weight: bold; margin-left: 12%; padding: 0.1em 0.5em; }
+form label { clear: left; display: block; float: left; margin-right: 1%; text-align: right; width: 20%; }
+form input[type="text"], form textarea { border: 1px solid #bbb; margin-top: -0.5%; outline: none; padding: 0.5%; position: relative; width: 49.5%; 
+	-webkit-border-radius: 2px; -moz-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; 
+	-webkit-transition: border 0.3s ease-in-out;
+}
+form input[type="text"]:focus, form textarea:focus { border-color: rgba(0,0,0,0.9); }
+
+/* post admin */
+#post_list 		{ width: 100%; }
+#post_list th { font-size: 120%; padding-top: 8px; }
+#post_list td { padding: 0.4em 0; }
+#post_list tr { border-bottom: 1px solid #ddd; }
+#post_list tr.even { background: #333; background: rgba(150,150,150,0.1); }
+#post_list .post_pubdate, #post_list .post_comments, #post_list .post_status, #post_list .skinny_column	{ text-align: center; }

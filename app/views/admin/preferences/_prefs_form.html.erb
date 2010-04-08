@@ -1,4 +1,4 @@
-<%- field_set_tag 'Site settings' do -%>
+<%- field_set_tag 'Site settings', :class => 'border' do -%>
 	<p><%= f.label :domain, @prefs['domain']['title'] %>
 		<%= text_field_tag 'preferences[domain]', @prefs['domain']['value']  %>
 		<span class="help"><%= @prefs['domain']['description'] %></span>
@@ -24,7 +24,7 @@
 		<span class="help"><%= @prefs['owner_email']['description'] %></span>
 	</p>
 <%- end -%>
-<%- field_set_tag 'Advanced options' do -%>
+<%- field_set_tag 'Advanced options', :class => 'border' do -%>
 	<p><%= f.label :items_on_index, @prefs['items_on_index']['title'] %>
 		<%= text_field_tag 'preferences[items_on_index]', @prefs['items_on_index']['value'] %>
 		<span class="help"><%= @prefs['items_on_index']['description'] %></span>
