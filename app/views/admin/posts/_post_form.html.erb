@@ -23,6 +23,6 @@
 	<p><%= f.check_box :is_active, :checked => true %> <%= f.label :is_active, "Make this post active", :class => 'with_checkbox' %></p>
 	<p><%= f.check_box :comment_status %> <%= f.label :comment_status, "Allow comments", :class => 'with_checkbox' %></p>
 <%- end -%>
-<%- field_set_tag do -%>
+<%- field_set_tag nil, :class => 'buttons' do -%>
 	<%= f.submit "Save" %>
 <%- end -%>

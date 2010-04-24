@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  helper :site
+  # helper :site
   $page_title = Preference.get_pref('slogan') # default title
   
   def list
@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     $page_title = @posts.title.nil? ? '' : @posts.title
   end
   
+  # TODO: set up archive views
   def archive
     $page_title = 'Archived posts'
     @posts = Post.recent(Preference.get_pref('items_on_index'))

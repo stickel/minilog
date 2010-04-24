@@ -5,7 +5,7 @@
 	<title><%= $page_title + ' // ' unless $page_title.blank? || $page_title.nil? %><%= Site.site_name %></title>
 	<%= stylesheet_link_tag 'minilog' %>
 </head>
-<body>
+<body<%= " id=\"#{$page_id}\"" unless $page_id.nil? || $page_id.blank? %>>
 	<%= yield %>
 	<div id="nav">
 		<ul>

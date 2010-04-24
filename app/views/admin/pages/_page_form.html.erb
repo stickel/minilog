@@ -1,0 +1,24 @@
+<%- field_set_tag do -%>
+	<p><%= f.label :title, "Page Title" %>
+		<%= f.text_field :title %>
+	</p>
+	<p><%= f.label :permalink, "Permalink" %>
+		<%= f.text_field :permalink %>
+	</p>
+	<p><%= f.label :body_raw, "Page content" %>
+		<%= f.text_area :body_raw %>
+	</p>
+<%- end -%>
+<%- field_set_tag 'Options', :class => 'border' do -%>
+	<p class="short_inputs"><%= f.label :is_active, "Make this page public" %> <%= f.check_box :is_active, :checked => true %></p>
+	<p class="short_inputs"><%= f.label :parent_id, "Page parent" %> 
+		<%= f.select :parent_id, Page.all.collect { |p| [p.title, p.id] }, {:prompt => 'No parent'} %>
+	</p>
+	<p class="short_inputs clear"><%= f.label :in_nav, "Show in navigation" %> <%= f.check_box :in_nav %></p>
+	<p class="short_inputs"><%= f.label :order, "Page order" %>
+		<%= f.text_field :order %>
+	</p>
+<%- end -%>
+<%- field_set_tag nil, :class => 'buttons' do -%>
+	<%= f.submit 'Save' %>
+<%- end -%>

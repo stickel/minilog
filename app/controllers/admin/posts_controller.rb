@@ -9,13 +9,13 @@ class Admin::PostsController < ApplicationController
   end
   
   def new
-    $page_title = 'Create a new post'
+    $page_title = 'Write a new post'
   end
   
   def create
     post = Post.new(params[:post])
     post.permalink = params[:post][:permalink].nil? ? params[:post][:permalink] : make_permalink(params[:post][:title])
-    post.body = Post.htmlize_copy(params[:post][:body_raw])
+    post.body = htmlize_copy(params[:post][:body_raw])
     post.author_id = current_person.id
     post.published_at = params[:post][:published_at] ? Time.parse(params[:post][:published_at]).utc : Time.now.utc
     if post.save

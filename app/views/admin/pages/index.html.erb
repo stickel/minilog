@@ -1,0 +1,8 @@
+<%= render :partial => 'admin/base/header' %>
+	<%- unless @pages.nil? || @pages.length < 1 -%>
+		<!-- TODO: include subnav -->
+		<%= render :partial => 'admin/pages/list_table', :locals => {:pages => @pages} %>
+	<%- else -%>
+		<p>There are currently no pages. You could <%= link_to 'write a new one', new_admin_page_path %>.</p>
+	<%- end -%>
+<%= render :partial => 'admin/base/footer' %>

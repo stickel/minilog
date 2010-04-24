@@ -1,8 +1,8 @@
 <%= render :partial => 'admin/base/header' %>
 	<%- unless @posts.nil? -%>
 	<!-- TODO: post subnav here -->
-	<%= render :partial => 'admin/posts/list_table', :locals => {:posts => @posts} %>
+		<%= render :partial => 'admin/posts/list_table', :locals => {:posts => @posts} %>
 	<%- else -%>
-	<p>There are currently no posts. You should think about <%= link_to "writing one", new_admin_post_path %>.</p>
+		<p>There are currently no posts. You should think about <%= link_to "writing one", new_admin_post_path %>.</p>
 	<%- end -%>
 <%= render :partial => 'admin/base/footer' %>

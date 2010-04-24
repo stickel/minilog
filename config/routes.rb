@@ -35,10 +35,6 @@ ActionController::Routing::Routes.draw do |map|
   # feeds
   
   
-  # "pages"
-  # TODO: Need to make pages at the base level, not /pages/whatever
-  # map.connect ':permalink', :controller => 'pages', :action => 'show'
-  
   # authentication
   map.logout '/signout', :controller => 'sessions', :action => 'destroy'
   map.login '/signin', :controller => 'sessions', :action => 'new'
@@ -55,6 +51,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posts
     admin.resources :pages
   end
+  
+  # "pages"
+  map.pages ':permalink', :controller => 'pages', :action => 'show'
   
   # default routes
   map.connect ':controller/:action/:id'
