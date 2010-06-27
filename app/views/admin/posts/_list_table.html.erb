@@ -9,7 +9,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<%- pages.each do |p| -%>
+	<%- posts.each do |p| -%>
 		<tr class="<%= cycle('odd','even') %>">
 			<td class="post_pubdate"><%= p.published_at.to_s(:digits_reverse) %></td>
 			<td class="post_title"><%= link_to p.title, edit_admin_post_path(p) %></td>

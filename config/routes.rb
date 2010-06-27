@@ -33,7 +33,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'comments/add', :controller => 'posts', :action => 'add_comment'
   
   # feeds
-  
+  map.feeds 'feeds', :controller => 'feeds', :action => 'index'
+  map.feed 'feeds/:feed', :controller => 'feeds', :action => 'show'
   
   # authentication
   map.logout '/signout', :controller => 'sessions', :action => 'destroy'

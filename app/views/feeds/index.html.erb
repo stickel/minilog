@@ -1,0 +1,7 @@
+<%= render :partial => 'layouts/header' %>
+	<h2>Feeds</h2>
+	<p>This is a list of available feeds for <%= Site.site_name %>.</p>
+	<ul>
+		<li><%= link_to 'Posts feed', feed_path('posts') %></li>
+	</ul>
+<%= render :partial => 'layouts/footer' %>

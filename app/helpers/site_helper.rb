@@ -33,6 +33,10 @@ class Site
     return Preference.get_pref('archive_path_name')
   end
   
+  def self.language
+    return Preference.get_pref('language')
+  end
+  
   def self.nice_month(month)
     return Time.mktime(Time.zone.now.year,month,Time.zone.now.day).to_s(:month)
   end
