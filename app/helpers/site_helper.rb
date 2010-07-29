@@ -79,7 +79,7 @@ class Site
     
     list  +=  archive_start
     posts.each do |post|
-      list += archive_item_prefix+'<a href="/'+Site.archive_path+'/'+post.published_at.to_s(:month_digit)+'/'+post.published_at.year.to_s+'">'+Site.nice_month(post.published_at.month.to_s)+' '+post.published_at.year.to_s+"</a>"+archive_item_suffix
+      list += archive_item_prefix+'<a href="/'+Site.archive_path+'/'+post.published_at.year.to_s+'/'+post.published_at.to_s(:month_digit)+'">'+Site.nice_month(post.published_at.month.to_s)+' '+post.published_at.year.to_s+"</a>"+archive_item_suffix
     end
     list  +=  archive_end
     return list

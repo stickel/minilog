@@ -1,3 +1,4 @@
+<div class="main">
 <%- field_set_tag do -%>
 	<p><%= f.label :title, "Title" %>
 		<%= f.text_field :title %>
@@ -13,16 +14,27 @@
 		<span class="help">Separate tags with commas: personal, food, internet</span>
 	</p>
 <%- end -%>
-<%- field_set_tag 'Options', :class => 'border' do -%>
+<%- field_set_tag 'Post Extras', :class => 'border' do -%>
 	<p><%= f.label :summary, "Summary" %>
 		<%= f.text_area :summary, :rows => 5 %>
+	</p>
+<%- end -%>
+</div>
+<div class="options">
+<%- field_set_tag 'Post Options', :class => 'border' do -%>
+	<p><%= f.label :is_active, "Publish status" %>
+		<%= f.select :is_active, [["Published", 1], ["Draft", 0]] %> 
 	</p>
 	<p><%= f.label :published_at, "Publish time" %>
 		<%= f.text_field :published_at %>
 	</p>
-	<p><%= f.check_box :is_active, :checked => true %> <%= f.label :is_active, "Make this post active", :class => 'with_checkbox' %></p>
-	<p><%= f.check_box :comment_status %> <%= f.label :comment_status, "Allow comments", :class => 'with_checkbox' %></p>
+	<p><%= f.label :comment_status, "Comments" %>
+		<%= f.select :comment_status, [["Disabled", 0], ["Enabled", 1]] %>
+	</p>
 <%- end -%>
 <%- field_set_tag nil, :class => 'buttons' do -%>
-	<%= f.submit "Save" %>
+	<button type="submit" value="Save" name="save">
+		Save
+	</button>
 <%- end -%>
+</div>
