@@ -39,11 +39,14 @@
 		</select>
 		<span class="help"><%= @prefs['archive_path_name']['description'] %></span>
 	</p>
+	<!-- <p><%# f.label :archive_link_format, @prefs['archive_link_format']['title'] %>
+		<select name="preferences[archive_link_format]">
+			<%# options_for_select({'List' => 'list', 'Jump menu' => 'jump_menu'}, :selected => @prefs['archive_link_format']['value']) %>
+		</select>
+	</p> -->
 	<p><%= f.label :timezone, @prefs['timezone']['title'] %>
-		<%# text_field_tag 'preferences[timezone]', @prefs['timezone']['value'] %>
 		<%= time_zone_select 'preferences', 'timezone', nil, :default => @prefs['timezone']['value'] %>
-		<span class="help"><%= @prefs['timezone']['description'] %></span>
-		<%= @prefs['timezone']['value'] %>
+		<span class="help"><%= @prefs['timezone']['description'] %> Currently set to: <%= @prefs['timezone']['value'] %></span>
 	</p>
 	<p><%= f.label :time_format, @prefs['time_format']['title'] %>
 		<%= text_field_tag 'preferences[time_format]', @prefs['time_format']['value'] %>
@@ -54,7 +57,7 @@
 		<span class="help"><%= @prefs['language']['description'] %></span>
 	</p>
 	<p><%= f.label :metrics, @prefs['metrics']['title'] %>
-		<%= f.text_area :metrics, :value => @prefs['metrics']['value'] %>
+		<%= f.text_area :metrics, :value => @prefs['metrics']['value'], :rows => 5 %>
 		<span class="help"><%= @prefs['metrics']['description'] %></span>
 	</p>
 <%- end -%>

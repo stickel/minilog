@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100409043355) do
+ActiveRecord::Schema.define(:version => 20100729031943) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"

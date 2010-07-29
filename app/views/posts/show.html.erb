@@ -1,5 +1,6 @@
 <%= render :partial => 'layouts/header' %>
 	<h2><%= @posts.title %></h2>
+	<p class="post-meta"><%= @posts.published_at.to_s(:long_form) %></p>
 	<%= @posts.body %>
 	
 	<h4>Tags</h4>

@@ -33,6 +33,10 @@ class Site
     return Preference.get_pref('archive_path_name')
   end
   
+  def self.archive_link_format
+    return Preference.get_pref('archive_link_format')
+  end
+  
   def self.language
     return Preference.get_pref('language')
   end
@@ -46,27 +50,38 @@ class Site
   end
   
   def self.archive_by_year
-    years = Post.years
+    posts = Post.published.years
     list  =   '<h3>Archive by year</h3>'
-    list  +=  '<ul>'+"\n"
-    years.group_by(&:year).each do |y|
-      list  +=  '<li><a href="/'+Site.archive_path+'/'+y[0]+'">'+y[0]+"</a></li>\n"
+    if Site.archive_link_format === 'list'
+      archive_start       = '<ul>'+"\n"
+      archive_item_prefix = '<li>'
+      archive_item_suffix = "</li>\n"
+      archive_end         = '</ul>'+"\n"
     end
-    list  +=  '</ul>'+"\n"
+    
+    list  +=  archive_start
+    posts.each do |post|
+      list  +=  archive_item_prefix+'<a href="/'+Site.archive_path+'/'+post.published_at.year.to_s+'">'+post.published_at.year.to_s+"</a>"+archive_item_suffix
+    end
+    list  +=  archive_end
     return list
   end
   
-  # FIXME: Group this by month/year
   def self.archive_by_month
-    months = Post.months
+    posts = Post.published.months
     list  =   '<h3>Archive by month</h3>'
-    list  +=  '<ul>'+"\n"
-    months.each do |m|
-      # return year
-      # list  +=  '<li><a href="/'+Site.archive_path+'/'+year[0]+'/'+month[0]+'">'+Site.nice_month(month[0])+' '+year[0]+"</a></li>\n"
-      list  +=  '<li><a href="/'+Site.archive_path+'/'+m.year+'/'+m.month+'">'+Site.nice_month(m.month)+' '+m.year+"</a></li>\n"
+    if Site.archive_link_format === 'list'
+      archive_start       = '<ul>'+"\n"
+      archive_item_prefix = '<li>'
+      archive_item_suffix = "</li>\n"
+      archive_end         = '</ul>'+"\n"
     end
-    list  +=  '</ul>'+"\n"
+    
+    list  +=  archive_start
+    posts.each do |post|
+      list += archive_item_prefix+'<a href="/'+Site.archive_path+'/'+post.published_at.to_s(:month_digit)+'/'+post.published_at.year.to_s+'">'+Site.nice_month(post.published_at.month.to_s)+' '+post.published_at.year.to_s+"</a>"+archive_item_suffix
+    end
+    list  +=  archive_end
     return list
   end
   
