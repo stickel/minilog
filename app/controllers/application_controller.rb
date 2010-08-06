@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   layout 'site'
   helper :site # include all helpers, all the time
   helper_method :htmlize_copy, :list_to_array, :make_permalink, :tags_to_list
+  before_filter :set_time_zone
   
   def htmlize_copy(copy)
     begin
@@ -49,6 +50,15 @@ class ApplicationController < ActionController::Base
   
   def help
     Helper.instance
+  end
+  
+  def set_time_zone
+    time_zone = Preference.get_pref('timezone')
+    if current_person && !time_zone.blank?
+      Time.zone = time_zone
+    else
+      Time.zone = 'UTC'
+    end
   end
 end
 

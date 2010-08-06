@@ -41,6 +41,10 @@ class Site
     return Preference.get_pref('language')
   end
   
+  def self.time_zone
+    return Preference.get_pref('timezone')
+  end
+  
   def self.nice_month(month)
     return Time.mktime(Time.zone.now.year,month,Time.zone.now.day).to_s(:month)
   end

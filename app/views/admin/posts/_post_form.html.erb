@@ -26,7 +26,8 @@
 		<%= f.select :is_active, [["Published", 1], ["Draft", 0]] %> 
 	</p>
 	<p><%= f.label :published_at, "Publish time" %>
-		<%= f.text_field :published_at %>
+		<%= text_field_tag "post[published_at]", (@post.nil? ? Time.zone.now.to_s(:full) : Time.zone.parse(@post.published_at.to_s).to_s(:full)) %>
+		<span class="help">Please enter a specific date: (e.g., “April 15, 2012 3:45pm” or “apr 15 3:45pm”)</span>
 	</p>
 	<p><%= f.label :comment_status, "Comments" %>
 		<%= f.select :comment_status, [["Disabled", 0], ["Enabled", 1]] %>

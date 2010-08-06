@@ -2,5 +2,4 @@
 	<%- form_for :post, :url => {:action => 'create'}, :html => {:multipart => true} do |f| -%>
 		<%= render :partial => 'admin/posts/post_form', :locals => {:f => f} %>
 	<%- end -%>
-	<p class="clear">asdf</p>
 <%= render :partial => 'admin/base/footer' %>

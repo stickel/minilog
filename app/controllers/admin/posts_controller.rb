@@ -17,7 +17,7 @@ class Admin::PostsController < ApplicationController
     post.permalink = params[:post][:permalink].nil? ? params[:post][:permalink] : make_permalink(params[:post][:title])
     post.body = htmlize_copy(params[:post][:body_raw])
     post.author_id = current_person.id
-    post.published_at = params[:post][:published_at] ? Time.parse(params[:post][:published_at]).utc : Time.now.utc
+    post.published_at = params[:post][:published_at] ? Time.zone.parse(params[:post][:published_at]).utc : Time.zone.now.utc
     if post.save
       unless params[:tags].blank? || params[:tags].empty?
         post_tags = []
@@ -46,7 +46,7 @@ class Admin::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.permalink = params[:post][:permalink].nil? ? params[:post][:permalink] : make_permalink(params[:post][:title])
     post.body = htmlize_copy(params[:post][:body_raw])
-    post.published_at = Time.parse(params[:post][:published_at]).utc
+    post.published_at = Time.zone.parse(params[:post][:published_at]).utc
     if post.update_attributes(params[:post])
       unless params[:tags].blank? || params[:tags].empty?
         post_tags = []
@@ -58,6 +58,7 @@ class Admin::PostsController < ApplicationController
       end
       flash[:notice] = "Post updated!"
       redirect_to params[:return_path]
+      # render :action => :edit
     else
       flash[:error] = "Error updating post. Please try again."
       render :action => :edit

@@ -6,6 +6,8 @@
 	<%= stylesheet_link_tag 'minilog', 'admin' %>
 </head>
 <body<%= " id=\"#{$page_id}\"" unless $page_id.nil? || $page_id.blank? %>>
+	<%= "<p id=\"notice-message\">#{flash[:notice]}</p>" if flash[:notice] %>
+	<%= "<p id=\"error-message\">#{flash[:error]}</p>" if flash[:error] %>
 	<%= yield %>
 </body>
 </html>
