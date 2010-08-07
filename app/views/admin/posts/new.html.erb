@@ -1,5 +1,5 @@
 <%= render :partial => 'admin/base/header' %>
-	<%# form_for :post, :url => {:action => 'create'}, :html => {:multipart => true} do |f| %>
-	<%= render :partial => 'admin/posts/post_form', :locals => {:post => @post} %>
-	<%# end %>
+	<%- form_for :post, :url => {:action => 'create'}, :html => {:multipart => true} do |f| -%>
+		<%= render :partial => 'admin/posts/post_form', :locals => {:f => f} %>
+	<%- end -%>
 <%= render :partial => 'admin/base/footer' %>

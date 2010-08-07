@@ -45,7 +45,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   
   # admin
-  # map.admin 'admin', :controller => 'admin/base', :action => 'index'
   map.namespace(:admin) do |admin|
     admin.home '', :controller => 'base', :action => 'index'
     admin.preferences 'preferences', :controller => 'preferences', :action => 'index'
