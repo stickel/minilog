@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100729031943) do
+ActiveRecord::Schema.define(:version => 20100807194528) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -51,12 +51,14 @@ ActiveRecord::Schema.define(:version => 20100729031943) do
     t.datetime "activated_at"
     t.string   "state",                                    :default => "passive"
     t.datetime "deleted_at"
+    t.text     "information"
+    t.text     "information_raw"
   end
 
   add_index "people", ["login"], :name => "index_people_on_login", :unique => true
 
   create_table "posts", :force => true do |t|
-    t.integer  "author_id",                                        :null => false
+    t.integer  "person_id",                                        :null => false
     t.string   "permalink",      :limit => 128
     t.string   "title"
     t.text     "summary"

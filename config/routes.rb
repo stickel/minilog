@@ -51,6 +51,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.preferences 'preferences', :controller => 'preferences', :action => 'index'
     admin.resources :posts
     admin.resources :pages
+    admin.resources :people, :as => 'authors'
   end
   
   # "pages"

@@ -5,9 +5,12 @@
 	
 	<h4>Tags</h4>
 	<p><%= tags_as_sentence(@posts.tags) %></p>
-	<%- if current_person && logged_in? -%>
+<%- unless @posts.person.information.nil? -%>
+	<div class="about-author">
+		<p><%= @posts.person.information %></p>
+	</div>
+<%- end -%>
+<%- if logged_in? -%>
 	<p><%= link_to 'Edit this post', edit_admin_post_path(@posts.id) %></p>
-	<%- else -%>
-	<p>Not logged in</p>
-	<%- end -%>
+<%- end -%>
 <%= render :partial => 'layouts/footer' %>

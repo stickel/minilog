@@ -1,41 +1,44 @@
-<div class="main">
-<%- field_set_tag do -%>
-	<p><%= f.label :title, "Title" %>
-		<%= f.text_field :title %>
-	</p>
-	<p><%= f.label :permalink, "Permalink" %>
-		<%= f.text_field :permalink %>
-	</p>
-	<p><%= f.label :body_raw, "Post" %>
-		<%= f.text_area :body_raw %>
-	</p>
-	<p><%= label_tag :tags, "Tags" %>
-		<%= text_field_tag :tags, (@tags || '') %>
-		<span class="help">Separate tags with commas: personal, food, internet</span>
-	</p>
+<%- form_for post, :html => {:multipart => true} do |f| -%>
+	<%= hidden_field_tag 'return_path', @return_path %>
+	<div class="main">
+	<%- field_set_tag do -%>
+		<p><%= f.label :title, "Title" %>
+			<%= f.text_field :title %>
+		</p>
+		<p><%= f.label :permalink, "Permalink" %>
+			<%= f.text_field :permalink %>
+		</p>
+		<p><%= f.label :body_raw, "Post" %>
+			<%= f.text_area :body_raw %>
+		</p>
+		<p><%= label_tag :tags, "Tags" %>
+			<%= text_field_tag :tags, (@tags || '') %>
+			<span class="help">Separate tags with commas: personal, food, internet</span>
+		</p>
+	<%- end -%>
+	<%- field_set_tag 'Post Extras', :class => 'border' do -%>
+		<p><%= f.label :summary, "Summary" %>
+			<%= f.text_area :summary, :rows => 5 %>
+		</p>
+	<%- end -%>
+	</div>
+	<div class="options">
+	<%- field_set_tag 'Post Options', :class => 'border' do -%>
+		<p><%= f.label :is_active, "Publish status" %>
+			<%= f.select :is_active, [["Published", 1], ["Draft", 0]] %> 
+		</p>
+		<p><%= f.label :published_at, "Publish time" %>
+			<%= text_field_tag "post[published_at]", (@post.nil? ? Time.zone.now.to_s(:full) : Time.zone.parse(@post.published_at.to_s).to_s(:full)) %>
+			<span class="help">Please enter a specific date: (e.g., “April 15, 2012 3:45pm” or “apr 15 3:45pm”)</span>
+		</p>
+		<p><%= f.label :comment_status, "Comments" %>
+			<%= f.select :comment_status, [["Disabled", 0], ["Enabled", 1]] %>
+		</p>
+	<%- end -%>
+	<%- field_set_tag nil, :class => 'buttons' do -%>
+		<button type="submit" value="Save" name="save">
+			Save
+		</button>
+	<%- end -%>
+	</div>
 <%- end -%>
-<%- field_set_tag 'Post Extras', :class => 'border' do -%>
-	<p><%= f.label :summary, "Summary" %>
-		<%= f.text_area :summary, :rows => 5 %>
-	</p>
-<%- end -%>
-</div>
-<div class="options">
-<%- field_set_tag 'Post Options', :class => 'border' do -%>
-	<p><%= f.label :is_active, "Publish status" %>
-		<%= f.select :is_active, [["Published", 1], ["Draft", 0]] %> 
-	</p>
-	<p><%= f.label :published_at, "Publish time" %>
-		<%= text_field_tag "post[published_at]", (@post.nil? ? Time.zone.now.to_s(:full) : Time.zone.parse(@post.published_at.to_s).to_s(:full)) %>
-		<span class="help">Please enter a specific date: (e.g., “April 15, 2012 3:45pm” or “apr 15 3:45pm”)</span>
-	</p>
-	<p><%= f.label :comment_status, "Comments" %>
-		<%= f.select :comment_status, [["Disabled", 0], ["Enabled", 1]] %>
-	</p>
-<%- end -%>
-<%- field_set_tag nil, :class => 'buttons' do -%>
-	<button type="submit" value="Save" name="save">
-		Save
-	</button>
-<%- end -%>
-</div>

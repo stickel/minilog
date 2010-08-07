@@ -1,0 +1,7 @@
+<%= render :partial => 'admin/base/header' %>
+	<%- unless @people.nil? || @people.length < 1 -%>
+		<%= render :partial => 'admin/people/list_table', :locals => {:people => @people} %>
+	<%- else -%>
+		<p>There are currently no authors. You could <%= link_to 'create a new one', new_admin_people_path %>.</p>
+	<%- end -%>
+<%= render :partial => 'admin/base/footer' %>

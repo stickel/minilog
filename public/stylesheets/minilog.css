@@ -28,6 +28,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 h1		{ font-size: 200%; line-height: 1.2; padding: 0.75em 0 0.25em; }
 h2		{ font-size: 160%; line-height: 1.3; padding: 0.6em 0 0.2em; }
 p			{ padding-bottom: 1.5em; }
+small { font-size: 80%; }
 
 #main { padding: 0 0 2em; }
 
@@ -39,3 +40,14 @@ p			{ padding-bottom: 1.5em; }
 .clear { clear: both; }
 .clear_left { clear: left; }
 .clear_right { clear: right; }
+
+/* errors */
+.errorExplanation { border: 1px solid #f00; margin: 0 0 1.5em -10px; padding: 0; position: relative; }
+.errorExplanation h2 { background: #f00; color: #fff; margin-bottom: 5px; padding-left: 10px; }
+.errorExplanation p { padding: 0 10px; }
+.errorExplanation ul { list-style: disc outside; margin-left: 2.5em; margin-bottom: 1em; }
+
+/* inputs */
+form fieldset input[type="text"].error, 
+form fieldset input[type="password"].error, 
+form fieldset textarea.error { border: 1px solid #f00; }

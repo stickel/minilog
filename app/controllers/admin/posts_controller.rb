@@ -10,6 +10,7 @@ class Admin::PostsController < ApplicationController
   
   def new
     $page_title = 'Write a new post'
+    @post = Post.new
   end
   
   def create

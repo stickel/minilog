@@ -1,0 +1,37 @@
+	<%= hidden_field_tag 'return_path', @return_path %>
+	<%= f.error_messages :header_message => 'Please Try Again', :message => 'The following errors were found:' %>
+	<div class="main">
+		<%- field_set_tag '', :class => 'main' do -%>
+			<p><%= f.label :login, "Login" %>
+				<%= f.text_field :login %>
+			</p>
+			<p><%= f.label :name, "Name" %>
+				<%= f.text_field :name %>
+			</p>
+			<p><%= f.label :email, "Email address" %>
+				<%= f.text_field :email %>
+			</p>
+		<%- end -%>
+		<%- field_set_tag 'Additional information', :class => 'border' do -%>
+			<p><%= f.label :information_raw, "About me" %>
+				<%= f.text_area :information_raw, :rows => 5 %>
+			</p>
+		<%- end -%>
+	</div>
+	<%- field_set_tag 'Password', :class => 'options border' do -%>
+		<p><%= label_tag :old_password, "Old password" %>
+			<%= password_field_tag :old_password %>
+		</p>
+		<p><%= f.label :password, "New password" %>
+			<%= f.password_field :password %>
+		</p>
+		<p><%= f.label :password_confirmation, "Confirm it" %>
+			<%= f.password_field :password_confirmation %>
+			<span class="help">Please retype your new password</span>
+		</p>
+	<%- end -%>
+	<%- field_set_tag nil, :class => 'buttons clear' do -%>
+		<button type="submit" value="Save" name="save">
+			Save
+		</button>
+	<%- end -%>

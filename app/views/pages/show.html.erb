@@ -1,9 +1,7 @@
 <%= render :partial => 'layouts/header' %>
 	<h2><%= @pages.title %></h2>
 	<%= @pages.body %>
-	<%- if current_person && logged_in? -%>
+<%- if logged_in? -%>
 	<p><%= link_to 'Edit this page', edit_admin_page_path(@pages.id) %></p>
-	<%- else -%>
-	<p>Not logged in</p>
-	<%- end -%>
+<%- end -%>
 <%= render :partial => 'layouts/footer' %>

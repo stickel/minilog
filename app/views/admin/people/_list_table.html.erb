@@ -1,0 +1,24 @@
+<table name="people_list" id="people_list">
+	<thead>
+		<tr>
+			<th scope="col" class="people_login header">Login</th>
+			<th scope="col" class="people_name header">Name</th>
+			<th scope="col" class="people_email header">Email</th>
+			<th scope="col" class="people_status header">Status</th>
+			<th scope="col" class="skinny_column">Posts</th>
+			<th scope="col" class="skinny_column">Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+	<%- people.each do |p| -%>
+		<tr class="<%= cycle('odd','even') %>">
+			<td class="people_login"><%= p.login %> <small><%= link_to 'edit', edit_admin_person_path(p) %></small></td>
+			<td class="people_name"><%= p.name %></td>
+			<td class="people_email"><%= p.email %></td>
+			<td class="people_status"><%= p.state %></td>
+			<td class="skinny_column"><%= p.posts.size %></td>
+			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete %></td>
+		</tr>
+	<%- end -%>
+	</tbody>
+</table>

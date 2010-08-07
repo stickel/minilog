@@ -16,6 +16,18 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
   config.active_record.observers = :person_observer
   config.gem 'bluecloth', :version => '>= 2.0.0'
+  config.action_view.field_error_proc = Proc.new{ |html_tag, instance| 
+                                          msg = instance.error_message
+                                          error_class = "error"
+                                          if html_tag =~ /<(input|textarea|select)[^>]+class=/
+                                            style_attribute = html_tag =~ /class=['"]/
+                                            html_tag.insert(style_attribute + 7, "#{error_class}; ")
+                                          elsif html_tag =~ /<(input|textarea|select)/
+                                            first_whitespace = html_tag =~ /\s/
+                                            html_tag[first_whitespace] = " class=\"#{error_class}\" "
+                                          end
+                                          html_tag
+                                        }
 end
 
 ActionMailer::Base.delivery_method = :smtp
