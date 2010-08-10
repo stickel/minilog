@@ -1,8 +1,10 @@
 class Post < ActiveRecord::Base
+  has_many :uploads
   has_and_belongs_to_many :tags
   belongs_to :person
   validates_presence_of :permalink, :title, :body_raw
   has_permalink :permalink, :unique => true
+  accepts_nested_attributes_for :uploads, :allow_destroy => true, :reject_if => lambda { |i| i['upload'].blank? }
   
   named_scope :published, { :conditions => ['is_active = ? AND published_at <= ?', true, Time.zone.now], :order => 'published_at DESC' }
   named_scope :author, lambda { |a| {:conditions => ['is_active = ? AND author_id = ? AND published_at <= ?',true,a,Time.zone.now], :order => 'published_at DESC'} }

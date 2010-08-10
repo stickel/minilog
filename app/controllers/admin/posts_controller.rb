@@ -11,13 +11,14 @@ class Admin::PostsController < ApplicationController
   def new
     $page_title = 'Write a new post'
     @post = Post.new
+    2.times { @post.uploads.build }
   end
   
   def create
     post = Post.new(params[:post])
     post.permalink = params[:post][:permalink].nil? ? params[:post][:permalink] : make_permalink(params[:post][:title])
     post.body = htmlize_copy(params[:post][:body_raw])
-    post.author_id = current_person.id
+    post.person_id = current_person.id
     post.published_at = params[:post][:published_at] ? Time.zone.parse(params[:post][:published_at]).utc : Time.zone.now.utc
     if post.save
       unless params[:tags].blank? || params[:tags].empty?
@@ -41,6 +42,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @tags = tags_to_list(@post.tags)
     @return_path = request.referrer
+    2.times { @post.uploads.build }
   end
   
   def update
@@ -59,14 +61,20 @@ class Admin::PostsController < ApplicationController
       end
       flash[:notice] = "Post updated!"
       redirect_to params[:return_path]
-      # render :action => :edit
     else
-      flash[:error] = "Error updating post. Please try again."
+      flash[:error] = "Error updating post. Please try again. #{post.errors.inspect.to_s}"
       render :action => :edit
     end
   end
   
   def list
     @posts = Post.all
+  end
+  
+  def destroy
+    if Post.delete(params[:id])
+      flash[:notice] = "Post deleted"
+      redirect_to admin_posts_path
+    end
   end
 end

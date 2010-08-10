@@ -15,7 +15,7 @@
 			<td class="post_title"><%= link_to p.title, edit_admin_post_path(p) %></td>
 			<td class="post_comments"><%= p.comment_status? ? p.comments.length : 'Disabled' %></td>
 			<td class="post_status"><%= p.is_active? ? "Published" : "Draft" %></td>
-			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete %></td>
+			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete, :confirm => 'Are you sure? This cannot be undone.' %></td>
 		</tr>
 	<%- end -%>
 	</tbody>

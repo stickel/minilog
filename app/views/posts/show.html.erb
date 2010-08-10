@@ -1,10 +1,17 @@
 <%= render :partial => 'layouts/header' %>
 	<h2><%= @posts.title %></h2>
 	<p class="post-meta"><%= @posts.published_at.to_s(:long_form) %></p>
+	<%- @posts.uploads.each do |image| -%>
+		<%= image_tag image.upload.url(:large) %>
+		<%= "<p class=\"caption\">#{image.caption}</p>" unless image.caption.blank? %>
+	<%- end -%>
+	
 	<%= @posts.body %>
 	
+	<%- unless @posts.tags.blank? -%>
 	<h4>Tags</h4>
 	<p><%= tags_as_sentence(@posts.tags) %></p>
+	<%- end -%>
 <%- unless @posts.person.information.nil? -%>
 	<div class="about-author">
 		<p><%= @posts.person.information %></p>

@@ -4,5 +4,5 @@ doc/api
 doc/app
 db/*.sqlite3
 db/*.sql*
-public/assets/**
+public/uploads/**
 config/database.yml

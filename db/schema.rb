@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100807194528) do
+ActiveRecord::Schema.define(:version => 20100810003801) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(:version => 20100807194528) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.integer  "post_id"
+    t.string   "caption"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.string   "upload_file_size"
+    t.datetime "upload_updated_at"
   end
 
 end

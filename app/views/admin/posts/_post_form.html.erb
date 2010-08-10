@@ -1,4 +1,4 @@
-	<%# hidden_field_tag 'return_path', @return_path %>
+	<%= hidden_field_tag 'return_path', @return_path %>
 	<div class="main">
 	<%- field_set_tag do -%>
 		<p><%= f.label :title, "Title" %>
@@ -19,6 +19,18 @@
 		<p><%= f.label :summary, "Summary" %>
 			<%= f.text_area :summary, :rows => 5 %>
 		</p>
+		<% f.fields_for :uploads do |upload| %>
+			<%- if upload.object.new_record? -%>
+				<%= render 'admin/posts/upload', :f => upload %>
+			<%- end -%>
+		<% end %>
+		
+		<%- f.fields_for :uploads do |upload| -%>
+			<%- unless upload.object.new_record? -%>
+				<%= image_tag upload.object.upload.url(:thumb) %>
+				<%= upload.check_box :_delete %> <%= upload.label :_delete, "Delete this image" %>
+			<%- end -%>
+		<%- end -%>
 	<%- end -%>
 	</div>
 	<div class="options">
