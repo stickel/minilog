@@ -1,5 +1,7 @@
 <%= render :partial => 'admin/base/navigation' %>
 <div id="header">
+	<%= "<p id=\"notice-message\">#{flash[:notice]}</p>" if flash[:notice] %>
+	<%= "<p id=\"error-message\">#{flash[:error]}</p>" if flash[:error] %>
 	<h1><%= link_to Site.site_name, admin_home_path %> : <%= $page_title %></h1>
 </div> <!-- /header -->
 <div id="main">

@@ -9,9 +9,9 @@
 <body<%= " id=\"#{$page_id}\"" unless $page_id.nil? || $page_id.blank? %>>
 	<%= yield %>
 	<div id="nav">
+		<%= Site.page_navigation %>
 		<ul>
 			<li><%= link_to 'Archives', posts_path(Site.archive_path) %></li>
-			<li>Pages? <%# link_to 'Pages', pages_path('pages') %></li>
 			<li><%= link_to 'Posts feed', feed_path('posts') %></li>
 			<li><%= sign_in_out_link(current_person) %></li>
 			<li><%= link_to 'Admin', admin_home_path %></li>

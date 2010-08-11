@@ -1,3 +1,5 @@
+<%= "<p id=\"notice-message\">#{flash[:notice]}</p>" if flash[:notice] %>
+<%= "<p id=\"error-message\">#{flash[:error]}</p>" if flash[:error] %>
 <div id="header">
 	<h1><%= link_to Site.site_name, home_path, :title => "Back to the ‘#{Site.site_name}’ home page" %></h1>
 	<p class="subhead"><%= Site.site_slogan %></p>

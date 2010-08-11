@@ -32,6 +32,10 @@ small { font-size: 80%; }
 
 #main { padding: 0 0 2em; }
 
+/* lists */
+ul ul { margin: 0 0 0 1em; }
+ul ul ul { margin: 0 0 0 2em; }
+
 /* layout */
 .span_half { float: left; width: 49%; }
 .span_third { float: left; width: 32%; }

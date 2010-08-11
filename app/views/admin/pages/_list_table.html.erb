@@ -1,21 +1,21 @@
-<table name="post_list" id="post_list">
+<table name="page_list" id="page_list">
 	<thead>
 		<tr>
-			<th scope="col" class="post_pubdate header">Date</th>
-			<th scope="col" class="post_title header">Title</th>
-			<th scope="col" class="post_comments header">Parent page</th>
-			<th scope="col" class="post_status header">Status</th>
+			<th scope="col" class="page_pubdate header">Date</th>
+			<th scope="col" class="page_title header">Title</th>
+			<th scope="col" class="page_parent header">Parent page</th>
+			<th scope="col" class="page_status header">Status</th>
 			<th scope="col" class="skinny_column">Delete</th>
 		</tr>
 	</thead>
 	<tbody>
 	<%- pages.each do |p| -%>
 		<tr class="<%= cycle('odd','even') %>">
-			<td class="post_pubdate"><%= p.created_at.to_s(:digits_reverse) %></td>
-			<td class="post_title"><%= link_to p.title, edit_admin_page_path(p) %></td>
-			<td class="post_comments"><%= page_title(p.parent_id) %></td>
-			<td class="post_status"><%= p.is_active? ? "Published" : "Draft" %></td>
-			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete %></td>
+			<td class="page_pubdate"><%= p.created_at.to_s(:digits_reverse) %></td>
+			<td class="page_title"><%= link_to p.title, edit_admin_page_path(p) %></td>
+			<td class="page_parent"><%= page_title(p.parent_id) %></td>
+			<td class="page_status"><%= p.is_active? ? "Published" : "Draft" %></td>
+			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete, :confirm => 'Are you sure? There is no undo.' %></td>
 		</tr>
 	<%- end -%>
 	</tbody>

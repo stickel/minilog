@@ -49,6 +49,24 @@ class Site
     return Time.mktime(Time.zone.now.year,month,Time.zone.now.day).to_s(:month)
   end
   
+  def self.page_navigation
+    # Pages can only go down one level
+    parents = Page.published.parents.sorted
+    list = '<ul id="page_nav">'+"\n"
+    
+    parents.each do |parent|
+      list += '<li><a href="'+Site.site_url+'/'+parent.permalink+'" title="'+parent.title+'">'+parent.title+'</a>'
+      if !(children = Page.has_children?(parent.id)).nil?
+        list += "\n"+'<ul class="sub_page">'+"\n"
+        list += make_page_link(children)
+        list += "</ul>\n"
+      end
+      list += "</li>\n"
+    end
+    
+    list += "</ul>\n"
+  end
+  
   def self.archive_years
     return Post.years
   end
@@ -89,6 +107,14 @@ class Site
     return list
   end
   
+  protected
+  def self.make_page_link(pages)
+    result = ''
+    pages.each do |page|
+      result += '<li><a href="'+Site.site_url+'/'+page.permalink+'" title="'+page.title+'">'+page.title+"</a></li>\n"
+    end
+    return result
+  end
 end
 
 module SiteHelper

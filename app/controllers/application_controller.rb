@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
       text.gsub('\'','')
       text.gsub('"','')
       text.gsub('’','')
-      return text
+      return text.downcase
     end
   end
   

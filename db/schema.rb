@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100810003801) do
+ActiveRecord::Schema.define(:version => 20100811043741) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20100810003801) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
-    t.integer  "order"
+    t.integer  "page_order"
     t.boolean  "in_nav"
   end
 

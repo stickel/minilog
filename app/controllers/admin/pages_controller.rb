@@ -18,7 +18,7 @@ class Admin::PagesController < ApplicationController
     page.permalink = params[:page][:permalink].nil? ? params[:page][:permalink] : make_permalink(params[:page][:title])
     page.body = htmlize_copy(params[:page][:body_raw])
     if page.save
-      flash[:notice] = "Page created"
+      flash[:notice] = "Page created!"
       redirect_to admin_pages_path
     else
       flash[:error] = "Error creating page. Please try again"
@@ -36,6 +36,7 @@ class Admin::PagesController < ApplicationController
     page = Page.find(params[:id])
     page.permalink = params[:page][:permalink].nil? ? params[:page][:permalink] : make_permalink(params[:page][:title])
     page.body = htmlize_copy(params[:page][:body_raw])
+    
     if page.update_attributes(params[:page])
       flash[:notice] = "Page updated!"
       redirect_to params[:return_path]
@@ -47,5 +48,15 @@ class Admin::PagesController < ApplicationController
   
   def list
     @pages = Page.all
+  end
+  
+  def destroy
+    if Page.delete(params[:id])
+      flash[:notice] = "Page deleted!"
+      redirect_to :back
+    else
+      flash[:error] = "Problem deleting page. Please try again."
+      render :action => :edit
+    end
   end
 end
