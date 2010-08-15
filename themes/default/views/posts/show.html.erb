@@ -1,0 +1,19 @@
+<%= render :partial => 'layouts/header' %>
+	<h2><%= @posts.title %></h2>
+	<p class="post-meta"><%= @posts.published_at.to_s(:long_form) %></p>
+	
+	<%= @posts.body %>
+	
+	<%- unless @posts.tags.blank? -%>
+	<h4 class="clear">Tags</h4>
+	<p><%= tags_as_sentence(@posts.tags) %></p>
+	<%- end -%>
+<%- unless @posts.person.information.nil? -%>
+	<div class="about-author clear">
+		<p><%= @posts.person.information %></p>
+	</div>
+<%- end -%>
+<%- if logged_in? -%>
+	<p class="clear"><%= link_to 'Edit this post', edit_admin_post_path(@posts.id) %></p>
+<%- end -%>
+<%= render :partial => 'layouts/footer' %>

@@ -6,10 +6,16 @@ require 'preference'
 class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   include AuthenticatedSystem
-  layout 'site'
+  # layout 'site'
+  layout 'default'
+  theme :get_theme
   helper :site # include all helpers, all the time
   helper_method :htmlize_copy, :list_to_array, :make_permalink, :tags_to_list
   before_filter :set_time_zone
+  
+  def get_theme
+    return 'default'
+  end
   
   def list_to_array(list)
     unless list.blank?

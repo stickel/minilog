@@ -1,0 +1,10 @@
+<%= render :partial => 'layouts/header' %>
+<ul>
+<%- @posts.each do |p| -%>
+	<li class="clear">
+		<h2><%= link_to p.title, post_path('posts',p.permalink) %></h2>
+		<%= p.body %>
+	</li>
+<%- end -%>
+</ul>
+<%= render :partial => 'layouts/footer' %>

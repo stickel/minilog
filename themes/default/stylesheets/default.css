@@ -1,0 +1,73 @@
+/*
+   Main StyleSheet for the 'Default' theme
+*/
+/* Modified Reset v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe, 
+article, section, nav, aside, header, footer,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td { background: transparent; border: 0; font-size: 100%; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
+body { font-size: 12px; font-family: Helvetica, Arial, sans-serif; line-height: 1.5; margin: 0 auto; min-width: 800px; width: 80%; max-width: 1000px; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+/* remember to define focus styles! */
+:focus { outline: 0; }
+:active { }
+
+/* remember to highlight inserts somehow! */
+ins { background: yellow; text-decoration: none; }
+del { color: #333; color: rgba(0,0,0,0.4); text-decoration: line-through; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* type */
+h1		{ font-size: 200%; line-height: 1.2; padding: 0.75em 0 0.25em; }
+h2		{ font-size: 160%; line-height: 1.3; padding: 0.6em 0 0.2em; }
+p			{ padding-bottom: 1.5em; }
+small { font-size: 80%; }
+
+#main { padding: 0 0 2em; }
+
+/* links */
+/* light blue: #196ea0 rgb(25,110,160) */
+/* dark blue: #17356f rgb(23,53,111) */
+/* orange: #d06908 rgb(208,105,8) */
+/* green: #1aa032 rgb(26,160,50) */
+a { color: rgb(25,110,160); text-decoration: none; }
+a:visited { color: rgb(25,110,160); }
+a:focus,
+a:hover { color: rgb(26,160,50); }
+a:active { color: rgb(208,105,8); }
+
+/* lists */
+ul ul { margin: 0 0 0 1em; }
+ul ul ul { margin: 0 0 0 2em; }
+
+/* layout */
+.span_half { float: left; width: 49%; }
+.span_third { float: left; width: 32%; }
+
+/* misc */
+.clear { clear: both; }
+.clear_left { clear: left; }
+.clear_right { clear: right; }
+.left { float: left; margin: 0 15px 1.5em 0; }
+.right { float: right; margin: 0 0 1.5em 15px; }
+
+/* errors */
+.errorExplanation { border: 1px solid #f00; margin: 0 0 1.5em -10px; padding: 0; position: relative; }
+.errorExplanation h2 { background: #f00; color: #fff; margin-bottom: 5px; padding-left: 10px; }
+.errorExplanation p { padding: 0 10px; }
+.errorExplanation ul { list-style: disc outside; margin-left: 2.5em; margin-bottom: 1em; }
+
+/* inputs */
+form fieldset input[type="text"].error, 
+form fieldset input[type="password"].error, 
+form fieldset textarea.error { border: 1px solid #f00; }

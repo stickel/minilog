@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= Site.language %>" lang="<%= Site.language %>">
+<head>
+	<%= Site.meta_tags %>
+	<title><%= $page_title + ' // ' unless $page_title.blank? || $page_title.nil? %><%= Site.site_name %></title>
+	<link rel="alternate" type="application/rss+xml" title="<%= Site.site_url %> RSS feed" href="<%= feed_url('posts', :format => :rss) %>" />
+	<%= stylesheet_link_tag 'minilog' %>
+</head>
+<body<%= " id=\"#{$page_id}\"" unless $page_id.nil? || $page_id.blank? %>>
+	<%= yield %>
+	<div id="nav">
+		<%= Site.page_navigation %>
+		<ul>
+			<li><%= link_to 'Archives', posts_path(Site.archive_path) %></li>
+			<li><%= link_to 'Posts feed', feed_path('posts') %></li>
+			<li><%= sign_in_out_link(current_person) %></li>
+			<li><%= link_to 'Admin', admin_home_path %></li>
+		</ul>
+	</div> <!-- /nav -->
+	<%= Site.metrics %>
+</body>
+</html>
