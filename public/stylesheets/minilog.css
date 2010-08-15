@@ -32,6 +32,17 @@ small { font-size: 80%; }
 
 #main { padding: 0 0 2em; }
 
+/* links */
+/* light blue: #196ea0 rgb(25,110,160) */
+/* dark blue: #17356f rgb(23,53,111) */
+/* orange: #d06908 rgb(208,105,8) */
+/* green: #1aa032 rgb(26,160,50) */
+a { color: rgb(25,110,160); text-decoration: none; }
+a:visited { color: rgb(25,110,160); }
+a:focus,
+a:hover { color: rgb(26,160,50); }
+a:active { color: rgb(208,105,8); }
+
 /* lists */
 ul ul { margin: 0 0 0 1em; }
 ul ul ul { margin: 0 0 0 2em; }

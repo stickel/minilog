@@ -11,6 +11,8 @@ class Admin::PagesController < ApplicationController
   def new
     $page_title = 'Create a new page'
     $page_id = 'new_page'
+    @page = Page.new
+    # 2.times { @page.uploads.build }
   end
   
   def create
@@ -29,6 +31,7 @@ class Admin::PagesController < ApplicationController
   def edit
     $page_title = 'Edit page'
     @page = Page.find(params[:id])
+    # 2.times { @page.uploads.build }
     @return_path = request.referrer
   end
   
@@ -36,7 +39,6 @@ class Admin::PagesController < ApplicationController
     page = Page.find(params[:id])
     page.permalink = params[:page][:permalink].nil? ? params[:page][:permalink] : make_permalink(params[:page][:title])
     page.body = htmlize_copy(template_filter(params[:page][:body_raw]))
-    
     if page.update_attributes(params[:page])
       flash[:notice] = "Page updated!"
       redirect_to params[:return_path]

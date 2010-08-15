@@ -71,7 +71,6 @@ class ApplicationController < ActionController::Base
         alt_text = attributes[0].lstrip
         class_names = attributes[1]
         id_name = attributes[2].strip if !attributes[2].blank?
-        
         image_tag = build_image_tag(image_name, alt_text, class_names, id_name)
         replace_strings << image_tag
       end

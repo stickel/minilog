@@ -74,6 +74,9 @@ table 		{ width: 100%; }
 	table tr { border-bottom: 1px solid #ddd; }
 	table tr.even { background: #333; background: rgba(150,150,150,0.1); }
 
+/* links */
+a.delete-link { background: #be0802; border: 1px solid #be0802; color: #fff; padding: 2px 5px; -webkit-border-radius: 10px; }
+a.delete-link:hover { background: #fff; color: #be0802; }
 
 /* post admin */
 #post_list .post_pubdate, #post_list .post_comments, #post_list .post_status, #post_list .skinny_column	{ text-align: center; }

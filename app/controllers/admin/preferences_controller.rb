@@ -1,7 +1,7 @@
 class Admin::PreferencesController < ApplicationController
   layout 'admin'
   def index
-    $page_title = 'Admin : Preferences'
+    $page_title = 'Preferences'
     @prefs = {}
     preferences = Preference.find(:all)
     preferences.each do |p|

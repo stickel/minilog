@@ -1,5 +1,6 @@
 class Upload < ActiveRecord::Base
   belongs_to :post
+  belongs_to :page
   
   has_attached_file :upload, 
                     :styles => {:thumb => "50x50#", :small => "100x100>", :large => "300x300>"},

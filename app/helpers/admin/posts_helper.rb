@@ -6,7 +6,6 @@ module Admin::PostsHelper
     sizes.each do |size|
   		code += 'Display image size <b>' + size + '</b>:<br />' + "\n"
   		code += '{{ image ' + basename[0] + '_' + size + '.' + basename[1] + ' }}<br />' + "\n"
-      # code += '{{ image ' + basename[0] + '_' + size + '.' + basename[1] + ' alt text, class names, id}}<br />' + "\n"
     end
 		code += '</span>'
 		return code

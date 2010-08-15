@@ -1,4 +1,5 @@
-<%- field_set_tag '', :class => 'main' do -%>
+<div class="main">
+<%- field_set_tag '' do -%>
 	<p><%= f.label :title, "Page Title" %>
 		<%= f.text_field :title %>
 	</p>
@@ -9,13 +10,34 @@
 		<%= f.text_area :body_raw %>
 	</p>
 <%- end -%>
+<%- field_set_tag 'Images', :class => 'border' do -%>
+	<%# f.fields_for :uploads do |upload| %>
+		<%# if upload.object.new_record? %>
+			<%# render 'admin/pages/upload', :f => upload %>
+		<%# end %>
+	<%# end %>
+	<%# link_to_add_fields "More images", f, :uploads, 'button' %>
+	
+	<div id="uploads">
+	<%# f.fields_for :uploads do |upload| %>
+		<div class="attached_upload">
+		<%# unless upload.object.new_record? %>
+			<%# image_tag upload.object.upload.url(:thumb) %>
+			<%# upload.check_box :_delete %> <%# upload.label :_delete, "Remove image" %>
+			<%# display_image_code(upload.object) %>
+		<%# end %>
+		</div>
+	<%# end %>
+	</div>
+<%- end -%>
+</div>
 <%- field_set_tag 'Options', :class => 'options border' do -%>
 	<p><%= f.label :is_active, "Publish status" %> 
 		<%= f.select :is_active, [["Published", 1], ["Draft", 0]] %> 
 	</p>
 	<p id="navigation-status"><%= f.check_box :in_nav %> <%= f.label :in_nav, "Yes, show this page in the navigation" %></p>
 	<p><%= f.label :parent_id, "Parent page" %> 
-		<%= f.select :parent_id, Page.parents.collect { |p| [p.title, p.id] }, {:prompt => 'No parent'} %>
+		<%= f.select :parent_id, Page.parents.collect { |p| [truncate(p.title, :length => 22, :omission => '…'), p.id] }, {:prompt => 'No parent'} %>
 	</p>
 	<p><%= f.label :page_order, "Page order" %>
 		<%= f.text_field :page_order %>

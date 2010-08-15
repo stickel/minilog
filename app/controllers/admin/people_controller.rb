@@ -6,10 +6,12 @@ class Admin::PeopleController < ApplicationController
   helper :application
   
   def index
+    $page_title = 'Accounts'
     @people = Person.all
   end
   
   def new
+    $page_title = 'Create new account'
     @person = Person.new
   end
  
@@ -28,7 +30,7 @@ class Admin::PeopleController < ApplicationController
   end
   
   def edit
-    $page_title = 'Edit author'
+    $page_title = 'Edit account'
     @person = Person.find(params[:id])
   end
   

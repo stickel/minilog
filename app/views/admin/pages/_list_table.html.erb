@@ -15,7 +15,7 @@
 			<td class="page_title"><%= link_to p.title, edit_admin_page_path(p) %></td>
 			<td class="page_parent"><%= page_title(p.parent_id) %></td>
 			<td class="page_status"><%= p.is_active? ? "Published" : "Draft" %></td>
-			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete, :confirm => 'Are you sure? There is no undo.' %></td>
+			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete, :confirm => 'Are you sure? There is no undo.', :class => 'delete-link' %></td>
 		</tr>
 	<%- end -%>
 	</tbody>

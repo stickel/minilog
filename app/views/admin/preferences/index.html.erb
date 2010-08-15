@@ -1,5 +1,4 @@
 <%= render :partial => 'admin/base/header' %>
-	<p>Preferences admin.</p>
 <%- form_for :preferences, :url => {:action => 'save'} do |f| -%>
 	<%= render :partial => 'admin/preferences/prefs_form', :locals => {:f => f} %>
 <%- end -%>

@@ -33,10 +33,6 @@
 				<%= image_tag upload.object.upload.url(:thumb) %>
 				<%= upload.check_box :_delete %> <%= upload.label :_delete, "Remove image" %>
 				<%= display_image_code(upload.object) %>
-				<!-- <span class="help clear"> -->
-					<!-- Display this image large:<br /> -->
-					<!-- {{ image <%# upload.object['upload_file_name'] %> alt text, class names, id}} -->
-				<!-- </span> -->
 			<%- end -%>
 			</div>
 		<%- end -%>

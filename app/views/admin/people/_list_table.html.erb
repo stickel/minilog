@@ -17,7 +17,7 @@
 			<td class="people_email"><%= p.email %></td>
 			<td class="people_status"><%= p.state %></td>
 			<td class="skinny_column"><%= p.posts.size %></td>
-			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete %></td>
+			<td class="skinny_column"><%= link_to 'X', {:action => 'destroy', :id => p.id}, :method => :delete, :class => 'delete-link' unless p.id = '1' %></td>
 		</tr>
 	<%- end -%>
 	</tbody>
