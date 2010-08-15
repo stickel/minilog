@@ -17,7 +17,7 @@ class Admin::PostsController < ApplicationController
   def create
     post = Post.new(params[:post])
     post.permalink = params[:post][:permalink].nil? ? params[:post][:permalink] : make_permalink(params[:post][:title])
-    post.body = htmlize_copy(params[:post][:body_raw])
+    post.body = htmlize_copy(template_filter(params[:post][:body_raw]))
     post.person_id = current_person.id
     post.published_at = params[:post][:published_at] ? Time.zone.parse(params[:post][:published_at]).utc : Time.zone.now.utc
     if post.save
@@ -48,7 +48,7 @@ class Admin::PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     post.permalink = params[:post][:permalink].nil? ? params[:post][:permalink] : make_permalink(params[:post][:title])
-    post.body = htmlize_copy(params[:post][:body_raw])
+    post.body = htmlize_copy(template_filter(params[:post][:body_raw]))
     post.published_at = Time.zone.parse(params[:post][:published_at]).utc
     if post.update_attributes(params[:post])
       unless params[:tags].blank? || params[:tags].empty?

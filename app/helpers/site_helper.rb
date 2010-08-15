@@ -115,6 +115,7 @@ class Site
     end
     return result
   end
+  
 end
 
 module SiteHelper

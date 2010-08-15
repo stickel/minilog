@@ -16,7 +16,7 @@ class Admin::PagesController < ApplicationController
   def create
     page = Page.new(params[:page])
     page.permalink = params[:page][:permalink].nil? ? params[:page][:permalink] : make_permalink(params[:page][:title])
-    page.body = htmlize_copy(params[:page][:body_raw])
+    page.body = htmlize_copy(template_filter(params[:page][:body_raw]))
     if page.save
       flash[:notice] = "Page created!"
       redirect_to admin_pages_path
@@ -35,7 +35,7 @@ class Admin::PagesController < ApplicationController
   def update
     page = Page.find(params[:id])
     page.permalink = params[:page][:permalink].nil? ? params[:page][:permalink] : make_permalink(params[:page][:title])
-    page.body = htmlize_copy(params[:page][:body_raw])
+    page.body = htmlize_copy(template_filter(params[:page][:body_raw]))
     
     if page.update_attributes(params[:page])
       flash[:notice] = "Page updated!"

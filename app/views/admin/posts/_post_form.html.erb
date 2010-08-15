@@ -24,13 +24,23 @@
 				<%= render 'admin/posts/upload', :f => upload %>
 			<%- end -%>
 		<% end %>
+		<%= link_to_add_fields "More images", f, :uploads, 'button' %>
 		
+		<div id="uploads">
 		<%- f.fields_for :uploads do |upload| -%>
+			<div class="attached_upload">
 			<%- unless upload.object.new_record? -%>
 				<%= image_tag upload.object.upload.url(:thumb) %>
-				<%= upload.check_box :_delete %> <%= upload.label :_delete, "Delete this image" %>
+				<%= upload.check_box :_delete %> <%= upload.label :_delete, "Remove image" %>
+				<%= display_image_code(upload.object) %>
+				<!-- <span class="help clear"> -->
+					<!-- Display this image large:<br /> -->
+					<!-- {{ image <%# upload.object['upload_file_name'] %> alt text, class names, id}} -->
+				<!-- </span> -->
 			<%- end -%>
+			</div>
 		<%- end -%>
+		</div>
 	<%- end -%>
 	</div>
 	<div class="options">

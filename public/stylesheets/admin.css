@@ -14,7 +14,7 @@ html { background: #d9d9d9; }
 body { background: #fff; border: 5px solid rgba(205,205,205,1); margin-bottom: 1.5em; -webkit-border-bottom-left-radius: 15px; -webkit-border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-bottomright: 4px; }
 
 #main { padding: 0 40px 3em; width: 900px; }
-	#main .help { color: #919191; display: block; font-size: 80%; margin-left: 91px; }
+.help { color: #919191; display: block; font-size: 80%; margin-left: 91px; }
 
 /* header */
 header, #header { clear: both; margin-top: 3em; padding: 10px 40px 0; }
@@ -28,6 +28,7 @@ form legend { background: #fff; font-size: 120%; font-weight: bold; margin-left:
 
 form label { clear: left; display: block; float: left; margin-right: 10px; text-align: right; width: 81px; }
 	form #navigation-status label { float: right; text-align: left; width: 140px; }
+	form .attached_upload label { display: inline; float: none; text-align: left; width: auto; }
 
 form input[type="text"], 
 form input[type="password"], 
@@ -48,10 +49,19 @@ form .options { clear: none; float: right; margin-left: -10px; width: 266px; }
 	form .options input[type="text"],
 	form .options input[type="password"] { width: 165px; }
 
-form button { background: #e3e3e3; background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#dbdbdb)); border: 2px solid rgba(179,179,179,0.8); cursor: pointer; line-height: 22px; margin: 0 -2px; min-width: 85px; -webkit-box-shadow: inset #fff 1px 1px 0, inset #fff -1px -1px 0;
+form button,
+a.button { background: #e3e3e3; background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#dbdbdb)); border: 2px solid rgba(179,179,179,0.8); cursor: pointer; line-height: 22px; margin: 0 -2px; min-width: 85px; -webkit-box-shadow: inset #fff 1px 1px 0, inset #fff -1px -1px 0;
 	-webkit-border-radius: 4px; }
+a.button { color: #000; display: inline-block; float: right; text-align: center; text-decoration: none; }
 
 form #navigation-status { margin-bottom: 1.5em; padding-left: 91px; }
+form .attached_upload { float: left; width: 32%; }
+	form .attached_upload:first-child { clear: both; }
+	form .attached_upload img { display: block; margin-bottom: 5px; }
+	form .attached_upload input[type="checkbox"] { float: left; margin-right: 5px; }
+	form .attached_upload .help { margin-left: 0; }
+
+form #uploads { clear: both; }
 
 body #notice-message,
 body #error-message { display: block; font-size: 140%; margin: 10px 0 0; padding: 0.5em; }

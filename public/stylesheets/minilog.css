@@ -44,6 +44,8 @@ ul ul ul { margin: 0 0 0 2em; }
 .clear { clear: both; }
 .clear_left { clear: left; }
 .clear_right { clear: right; }
+.left { float: left; margin: 0 15px 1.5em 0; }
+.right { float: right; margin: 0 0 1.5em 15px; }
 
 /* errors */
 .errorExplanation { border: 1px solid #f00; margin: 0 0 1.5em -10px; padding: 0; position: relative; }
