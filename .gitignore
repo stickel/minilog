@@ -6,6 +6,8 @@ db/*.sqlite3
 db/*.sql*
 public/assets/**
 public/images/uploads/**
+public/themes/**
+!public/themes/default
 config/database.yml
 themes/**
 !themes/default
