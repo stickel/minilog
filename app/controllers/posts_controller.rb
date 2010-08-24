@@ -12,8 +12,8 @@ class PostsController < ApplicationController
     $page_title = @posts.title.nil? ? '' : @posts.title
   end
   
-  # TODO: set up archive views
   def archive
+    # TODO: Group post list by year? month? day?
     $page_title = 'Archived posts'
     @posts = Post.published.recent(Preference.get_pref('items_on_index'))
     @archive_years = Post.years
@@ -21,19 +21,19 @@ class PostsController < ApplicationController
   
   def by_day
     $page_title = "Archived posts for #{Site.nice_month(params[:month])} #{params[:day]}"
-    @posts = Post.published.recent(Preference.get_pref('items_on_index'))
+    @posts = Post.published.time_period(DateTime.new(params[:year].to_i, params[:month].to_i, params[:day].to_i).beginning_of_day.utc, DateTime.new(params[:year].to_i, params[:month].to_i, params[:day].to_i).end_of_day.utc)
     @archive_years = Post.years
   end
   
   def by_month
     $page_title = "Archived posts for #{Site.nice_month(params[:month])}"
-    @posts = Post.published.recent(Preference.get_pref('items_on_index'))
+    @posts = Post.published.time_period(DateTime.new(params[:year].to_i, params[:month].to_i).beginning_of_month.utc, DateTime.new(params[:year].to_i, params[:month].to_i).end_of_month.utc)
     @archive_years = Post.years
   end
   
   def by_year
     $page_title = "Archived posts for #{params[:year]}"
-    @posts = Post.published.recent(Preference.get_pref('items_on_index'))
+    @posts = Post.published.time_period(DateTime.new(params[:year].to_i).beginning_of_year.utc, DateTime.new(params[:year].to_i).end_of_year.utc)
     @archive_years = Post.years
   end
 end

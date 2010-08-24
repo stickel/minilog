@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   
   named_scope :published, { :conditions => ['is_active = ? AND published_at <= ?', true, Time.zone.now], :order => 'published_at DESC' }
   named_scope :author, lambda { |a| {:conditions => ['is_active = ? AND author_id = ? AND published_at <= ?',true,a,Time.zone.now], :order => 'published_at DESC'} }
-  named_scope :time_period, lambda { |dstart,dend| {:conditions => ['is_active = ? AND published_at BETWEEN ? AND ?',dstart,dend]} }
+  named_scope :time_period, lambda { |dstart,dend| {:conditions => ['published_at BETWEEN ? AND ?',dstart,dend]} }
   named_scope :recent, lambda { |*n| {:conditions => ['is_active = ?',true], :order => 'published_at DESC', :limit => (n.first || 5)} }
   named_scope :years, { :group => 'year(published_at)' }
   named_scope :months, { :group => 'month(published_at), year(published_at)' }
