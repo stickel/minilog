@@ -5,7 +5,7 @@ module PostsHelper
     sentence = []
     if links
       tags.each do |t|
-        sentence << link_to(t.name, tags_path(t.name))
+        sentence << link_to(t.name.strip, tags_path(t.name.strip))
       end
     else
       sentence = tags

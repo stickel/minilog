@@ -55,7 +55,11 @@ class Site
     list = '<ul id="page_nav">'+"\n"
     
     parents.each do |parent|
-      list += '<li><a href="'+Site.site_url+'/'+parent.permalink+'" title="'+parent.title+'">'+parent.title+'</a>'
+      list += '<li'
+      if !(children = Page.has_children?(parent.id)).nil?
+        list += ' class="with_sub"'
+      end
+      list += '><a href="'+Site.site_url+'/'+parent.permalink+'" title="'+parent.title+'">'+parent.title+'</a>'
       if !(children = Page.has_children?(parent.id)).nil?
         list += "\n"+'<ul class="sub_page">'+"\n"
         list += make_page_link(children)

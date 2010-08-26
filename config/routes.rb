@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   tokens = /archives|past|posts|notes|older/
   # index
-  map.home '', :controller => 'posts', :action => 'list'
+  # map.home '', :controller => 'application', :action => 'home'
+  map.home '', :controller => 'posts', :action => 'home'
   
   # archives by author
   map.posts_authors ':archive_token/authors/:id', :controller => 'posts', :action => 'by_author',

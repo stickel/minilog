@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_time_zone
   
   def get_theme
-    return 'default'
+    return 'healthierme'
+    # return Preference.get_pref('theme_name')
   end
   
   def list_to_array(list)

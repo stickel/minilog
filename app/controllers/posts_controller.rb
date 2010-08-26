@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   # helper :site
   $page_title = Preference.get_pref('slogan') # default title
   
+  def home
+    @posts = Post.published.recent(Preference.get_pref('items_on_index'))
+  end
+  
   def list
     $page_title = Site.site_slogan
     @posts = Post.published.recent(Preference.get_pref('items_on_index'))
