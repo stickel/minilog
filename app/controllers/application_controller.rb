@@ -83,9 +83,13 @@ class ApplicationController < ActionController::Base
       end
       # TODO: other template tag types
     end
-    match_strings.each do |match|
-      new_content = content.sub(match, replace_strings[index])
-      index += 1
+    unless replace_strings.empty?
+      match_strings.each do |match|
+        new_content = content.sub(match, replace_strings[index])
+        index += 1
+      end
+    else
+      new_content = content
     end
     return new_content
   end
