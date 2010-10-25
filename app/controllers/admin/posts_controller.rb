@@ -5,7 +5,7 @@ class Admin::PostsController < ApplicationController
   
   def index
     $page_title = 'Manage posts'
-    @posts = Post.recent(20)
+    @posts = Post.all #until pagination is added to the interface
   end
   
   def new

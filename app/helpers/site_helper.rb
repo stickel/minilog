@@ -3,8 +3,8 @@ class Site
   def self.meta_tags
     meta  = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'+"\n\t"
   	meta += '<meta name="viewport" content="width=device-width" />'+"\n\t"
-    meta += '<meta name="Author" content="'+'something here'+'" />'+"\n\t"
-	  meta += '<meta name="Description" content="'+'something here'+'" />'+"\n\t"
+    meta += '<meta name="Author" content="'+ Preference.get_pref('site_owner')+'" />'+"\n\t"
+	  meta += '<meta name="Description" content="'+ Preference.get_pref('site_description')+'" />'+"\n\t"
 	  return meta
   end
   
