@@ -19,7 +19,15 @@ class PostsController < ApplicationController
   def archive
     # TODO: Group post list by year? month? day?
     $page_title = 'Archived posts'
-    @posts = Post.published.recent(Preference.get_pref('items_on_index'))
+    @total_pages = Post.all.size
+    
+    # Pagination
+    if params[:offset]
+      offset = (Site.number_of_posts.to_i * (params[:offset].to_i - 1)).floor
+      @posts = Post.published.limited_set(offset)
+    else
+      @posts = Post.published.recent(Site.number_of_posts)
+    end
     @archive_years = Post.years
   end
   

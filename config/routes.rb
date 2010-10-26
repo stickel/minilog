@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   
   # archive
   map.posts ':archive_token', :controller => 'posts', :action => 'archive', :archive_token => tokens
+  map.posts_paged ':archive_token/page/:offset', :controller => 'posts', :action => 'archive', :archive_token => tokens
   
   # permalink
   map.post ':archive_token/:permalink', :controller => 'posts', :action => 'show',

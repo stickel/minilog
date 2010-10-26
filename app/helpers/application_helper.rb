@@ -31,24 +31,32 @@ module ApplicationHelper
     source.gsub(/(<img)(.*)( \/>)/i, '')
   end
   
-  def paginate(page,total_items,limit,target,previous_label,next_label)
+  def paginate(page,total_items,limit,base_url,previous_label,next_label)
     page = page.to_i ||= 1
     limit = limit.to_i ||= 10
     previous_label = previous_label ||= 'Previous page'
     next_label = next_label ||= 'Next page'
-    target = target ||= ''
+    base_url = base_url ||= ''
+    last_page = (total_items / limit).floor
     
-    previous_page = page - 1
-    next_page = page + 1
-    last_page = (total_items/limit).ceil
+    if page <= last_page
+      next_page = page - 1
+    else
+      next_page = 2
+    end
+    if page >= 1
+      previous_page = page + 1
+    else
+      previous_page = 2
+    end
     
-    # Conditional to show page navigation
+    # page navigation links
     pagination = ''
     if page < last_page
-      pagination << link_to("#{next_label}", "#{target}/page/#{next_page}", :class => 'next_link')
+      pagination << link_to("#{previous_label}", "#{base_url}/page/#{previous_page}", :class => 'previous_link')
     end
     if page > 1
-      pagination << link_to("#{previous_label}", "#{target}/page/#{previous_page}", :class => 'previous_link')
+      pagination << link_to("#{next_label}", "#{base_url}/page/#{next_page}", :class => 'next_link')
     end
     
     return pagination

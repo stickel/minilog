@@ -111,6 +111,10 @@ class Site
     return list
   end
   
+  def self.number_of_posts
+    return Preference.get_pref('items_on_index')
+  end
+  
   protected
   def self.make_page_link(pages)
     result = ''
