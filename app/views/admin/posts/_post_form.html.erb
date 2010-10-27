@@ -42,7 +42,7 @@
 	<div class="options">
 	<%- field_set_tag 'Post Options', :class => 'border' do -%>
 		<p><%= f.label :is_active, "Publish status" %>
-			<%= f.select :is_active, [["Published", 1], ["Draft", 0]] %> 
+			<%= f.select :is_active, [["Published", 1], ["Draft", 0]], :selected => ((@post.is_active) ? 1 : 0) %> 
 		</p>
 		<p><%= f.label :published_at, "Publish time" %>
 			<%= text_field_tag "post[published_at]", ((@post.published_at.nil?) ? Time.zone.now.to_s(:full) : Time.zone.parse(@post.published_at.to_s).to_s(:full)) %>
