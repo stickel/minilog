@@ -16,4 +16,5 @@
 <%- if logged_in? -%>
 	<p class="clear"><%= link_to 'Edit this post', edit_admin_post_path(@posts.id) %></p>
 <%- end -%>
+	<%= related_posts(5) %>
 <%= render :partial => 'layouts/footer' %>

@@ -26,6 +26,12 @@ module ApplicationHelper
     words[0..(length - 1)].join(' ') + (words.length > length ? end_string : '')
   end
   
+  def truncate_paragraphs(text, number_of_paragraphs = 1)
+    return if text.nil?
+    paragraphs = text.split('</p>')
+    paragraphs[0..(number_of_paragraphs.to_i - 1)]
+  end
+  
   def scrub_images(source)
     return if source.nil?
     source.gsub(/(<img)(.*)( \/>)/i, '')

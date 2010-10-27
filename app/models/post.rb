@@ -12,6 +12,8 @@ class Post < ActiveRecord::Base
   named_scope :recent, lambda { |*n| {:conditions => ['is_active = ?',true], :order => 'published_at DESC', :limit => (n.first || 5)} }
   named_scope :years, { :group => 'year(published_at)' }
   named_scope :months, { :group => 'month(published_at), year(published_at)' }
+  named_scope :limited_set, lambda { |*o| {:offset => (o.first || Preference.get_pref('items_on_index')), :limit => Preference.get_pref('items_on_index')}}
+  named_scope :with_tag, lambda { |tag, *limit| {:select => 'posts.*', :include => :tags, :conditions => ['tags.name = ?', tag], :limit => (limit.first || 5)} }
   
   def self.find_by_year(y)
     first_year = Time.parse("01/01/#{y}").strftime('%Y-%m-%d %H:%M:%S')
