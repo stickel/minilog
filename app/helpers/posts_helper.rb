@@ -35,4 +35,10 @@ module PostsHelper
     end
   end
   
+  def tweet_this
+    if Site.tweet_this
+      return '<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="stickel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>'
+    end
+  end
+  
 end

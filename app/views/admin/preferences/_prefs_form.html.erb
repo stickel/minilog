@@ -1,3 +1,4 @@
+<div class="main">
 <%- field_set_tag 'Site settings', :class => 'border' do -%>
 	<p><%= f.label :domain, @prefs['domain']['title'] %>
 		<%= text_field_tag 'preferences[domain]', @prefs['domain']['value']  %>
@@ -24,7 +25,7 @@
 		<span class="help"><%= @prefs['owner_email']['description'] %></span>
 	</p>
 <%- end -%>
-<%- field_set_tag 'Advanced options', :class => 'border' do -%>
+<%- field_set_tag 'Advanced options', :class => 'main border' do -%>
 	<p><%= f.label :items_on_index, @prefs['items_on_index']['title'] %>
 		<%= text_field_tag 'preferences[items_on_index]', @prefs['items_on_index']['value'] %>
 		<span class="help"><%= @prefs['items_on_index']['description'] %></span>
@@ -61,7 +62,16 @@
 		<span class="help"><%= @prefs['metrics']['description'] %></span>
 	</p>
 <%- end -%>
-<%- field_set_tag nil, :class => 'buttons' do -%>
+</div>
+<%- field_set_tag 'Options', :class => 'options border' do -%>
+	<p class="checkbox-options">
+		<%- if @prefs['tweet_this']['value'] === '1' -%>
+		<%= f.check_box :tweet_this, :checked => true %>
+		<%- else -%>
+		<%= f.check_box :tweet_this %>
+		<%- end -%> <%= f.label :tweet_this, @prefs['tweet_this']['title'] %>
+		<span class="help"><%= @prefs['tweet_this']['description'] %></span>
+	</p>
 	<button value="Save changes" type="submit" name="save" id="save">
 		Save changes
 	</button>

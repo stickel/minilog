@@ -115,6 +115,12 @@ class Site
     return Preference.get_pref('items_on_index')
   end
   
+  def self.tweet_this
+    if Preference.get_pref('tweet_this') === '1'
+      return true
+    end
+  end
+  
   protected
   def self.make_page_link(pages)
     result = ''
