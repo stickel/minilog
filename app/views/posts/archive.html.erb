@@ -2,9 +2,14 @@
 
 <ul>
 <%- @posts.each do |p| -%>
-	<li><%= link_to p.title, post_path(Site.archive_path,p.permalink) %></li>
+	<li>
+		<%= link_to p.title, post_path(Site.archive_path, p.permalink) %>
+		<%= truncate_paragraphs(scrub_images(p.body)) %> <%= link_to '[Read more]', post_path(Site.archive_path, p.permalink) %>
+	</li>
 <%- end -%>
 </ul>
+
+<%= paginate(params[:offset],@total_pages,Site.number_of_posts,"/#{Site.archive_path}",'&larr;Older posts', 'Newer posts &rarr;') %>
 
 <%= render :partial => 'posts/sidebar' %>
 <%= render :partial => 'layouts/footer' %>

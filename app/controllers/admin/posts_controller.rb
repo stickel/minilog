@@ -25,7 +25,7 @@ class Admin::PostsController < ApplicationController
         post_tags = []
         tags = list_to_array(params[:tags])
         tags.each do |t|
-          post_tags << Tag.find_or_create_by_name(t)
+          post_tags << Tag.find_or_create_by_name(t.strip)
         end
         post.tags = post_tags
       end
@@ -55,7 +55,7 @@ class Admin::PostsController < ApplicationController
         post_tags = []
         tags = list_to_array(params[:tags])
         tags.each do |t|
-          post_tags<< Tag.find_or_create_by_name(t)
+          post_tags<< Tag.find_or_create_by_name(t.strip)
         end
         post.tags = post_tags
       end

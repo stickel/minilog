@@ -13,6 +13,15 @@ module PostsHelper
     return sentence.to_sentence
   end
   
+  def tags_into_array(tags)
+    raise "No tags" if tags.nil?
+    tag_array = []
+    tags.each do |t|
+      tag_array << t.name
+    end
+    return tag_array
+  end
+  
   def related_posts(number_of_posts, title = "Related Posts")
     raise "No tags" if @posts.tags.blank?
     random_tag = @posts.tags[rand(@posts.tags.length.to_i)].name

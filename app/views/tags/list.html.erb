@@ -4,12 +4,10 @@
 <%- @posts.each do |p| -%>
 	<li class="posts<%= ' link' if tags_into_array(p.tags).include?('link') %><%= ' quote' if tags_into_array(p.tags).include?('quote') %>">
 		<%= link_to p.title, post_path(Site.archive_path, p.permalink) %>
-		<%= truncate_paragraphs(scrub_images(p.body)) %> <%= link_to '[Read more]', post_path(Site.archive_path, p.permalink) %>
+		<p class="byline">Posted by <%= p.person.name %> on <%= p.published_at.to_s(:long_form) %></p>
 	</li>
 <%- end -%>
 </ul>
-
-<%= paginate(params[:offset],@total_pages,Site.number_of_posts,"/#{Site.archive_path}",'&larr;Older posts', 'Newer posts &rarr;') %>
 
 <%= render :partial => 'posts/sidebar' %>
 <%= render :partial => 'layouts/footer' %>
