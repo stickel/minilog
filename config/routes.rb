@@ -4,6 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   # map.home '', :controller => 'application', :action => 'home'
   map.home '', :controller => 'posts', :action => 'home'
   
+  # archives short URL
+  map.posts_short '/p/:short_url_code', :controller => 'posts', :action => 'short_url'
+  
   # archives by author
   map.posts_authors ':archive_token/authors/:id', :controller => 'posts', :action => 'by_author',
                     :archive_token => tokens

@@ -48,4 +48,9 @@ class PostsController < ApplicationController
     @posts = Post.published.time_period(DateTime.new(params[:year].to_i).beginning_of_year.utc, DateTime.new(params[:year].to_i).end_of_year.utc)
     @archive_years = Post.years
   end
+  
+  def short_url
+    p = Post.find_by_short_url(params[:short_url_code])
+    redirect_to post_path(Site.archive_path, p.permalink)
+  end
 end

@@ -30,6 +30,11 @@ class Admin::PostsController < ApplicationController
         post.tags = post_tags
       end
       flash[:notice] = "Post created"
+      if post.update_attribute(:short_url, post.id.to_s(36))
+        flash[:notice] += " Short URL: #{Site.site_url}/p/#{post.id.to_s(36)}"
+      else
+        flash[:notice] += " Short URL couldn’t be created."
+      end
       redirect_to admin_posts_path
     else
       flash[:error] = "Error creating post. Please try again."
@@ -50,6 +55,9 @@ class Admin::PostsController < ApplicationController
     post.permalink = params[:post][:permalink].nil? ? params[:post][:permalink] : make_permalink(params[:post][:title])
     post.body = htmlize_copy(template_filter(params[:post][:body_raw]))
     post.published_at = Time.zone.parse(params[:post][:published_at]).utc
+    if post.short_url && post.short_url.blank?
+      post.short_url = post.id.to_s(36)
+    end
     if post.update_attributes(params[:post])
       unless params[:tags].blank? || params[:tags].empty?
         post_tags = []
@@ -59,7 +67,7 @@ class Admin::PostsController < ApplicationController
         end
         post.tags = post_tags
       end
-      flash[:notice] = "Post updated!"
+      flash[:notice] = "Post saved! Short URL: #{Site.site_url}/p/#{post.short_url}"
       redirect_to params[:return_path]
     else
       flash[:error] = "Error updating post. Please try again. #{post.errors.inspect.to_s}"
