@@ -1,7 +1,7 @@
 module PostsHelper
   
   def tags_as_sentence(tags, links = true)
-    raise "No tags" if tags.nil?
+    return if tags.nil?
     sentence = []
     if links
       tags.each do |t|
@@ -14,7 +14,7 @@ module PostsHelper
   end
   
   def tags_into_array(tags)
-    raise "No tags" if tags.nil?
+    return if tags.nil?
     tag_array = []
     tags.each do |t|
       tag_array << t.name
@@ -23,7 +23,7 @@ module PostsHelper
   end
   
   def related_posts(number_of_posts, title = "Related Posts")
-    raise "No tags" if @posts.tags.blank?
+    return if @posts.tags.blank?
     random_tag = @posts.tags[rand(@posts.tags.length.to_i)].name
     random_posts = Post.with_tag(random_tag, number_of_posts)
     
