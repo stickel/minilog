@@ -9,7 +9,7 @@
 <%- end -%>
 </ul>
 
-<%= paginate(params[:offset],@total_pages,Site.number_of_posts,"/#{Site.archive_path}",'&larr;Older posts', 'Newer posts &rarr;') %>
+<%= paginate('&larr;Older posts', 'Newer posts &rarr;') %>
 
 <%= render :partial => 'posts/sidebar' %>
 <%= render :partial => 'layouts/footer' %>

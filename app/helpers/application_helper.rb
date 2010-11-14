@@ -37,13 +37,14 @@ module ApplicationHelper
     source.gsub(/(<img)(.*)( \/>)/i, '')
   end
   
-  def paginate(page,total_items,limit,base_url,previous_label,next_label)
-    page = page.to_i ||= 1
-    limit = limit.to_i ||= 10
+  def paginate(previous_label, next_label)
+    page = params[:offset].to_i ||= 1
+    limit = Site.number_of_posts ||= 10
     previous_label = previous_label ||= 'Previous page'
     next_label = next_label ||= 'Next page'
-    base_url = base_url ||= ''
-    last_page = (total_items / limit).floor
+    base_url = Site.archive_path
+    last_page = (Post.all.size / limit).floor
+    pagination = ''
     
     if page <= last_page
       next_page = page - 1
@@ -56,16 +57,13 @@ module ApplicationHelper
       previous_page = 2
     end
     
-    # page navigation links
-    pagination = ''
     if page < last_page
-      pagination << link_to("#{previous_label}", "#{base_url}/page/#{previous_page}", :class => 'previous_link')
+      pagination << link_to(previous_label, "#{base_url}/page/#{previous_page}", :class => 'previous_link')
     end
     if page > 1
-      pagination << link_to("#{next_label}", "#{base_url}/page/#{next_page}", :class => 'next_link')
+      pagination << link_to(next_label, "#{base_url}/page/#{next_page}", :class => 'next_link')
     end
     
     return pagination
   end
-  
 end
