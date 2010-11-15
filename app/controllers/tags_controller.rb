@@ -3,6 +3,6 @@ class TagsController < ApplicationController
   
   def list
     @tag = params[:tag]
-    @posts = Post.with_tag(@tag)
+    @posts = Post.published.newest_first.with_tag(@tag)
   end
 end
