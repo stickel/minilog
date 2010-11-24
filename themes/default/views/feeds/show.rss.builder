@@ -10,7 +10,7 @@ xml.rss :version => "2.0" do
         xml.title post.title
         xml.description post.body
         xml.pubDate post.published_at.to_s(:rfc822)
-        xml.link "http://#{Site.site_url}/#{Site.archive_path}/" + post.permalink
+        xml.link "#{Site.site_url}/#{Site.archive_path}/" + post.permalink
       end
     end
   end
