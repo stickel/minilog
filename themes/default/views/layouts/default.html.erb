@@ -3,7 +3,7 @@
 <head>
 	<%= Site.meta_tags %>
 	<title><%= $page_title + ' // ' unless $page_title.blank? || $page_title.nil? %><%= Site.site_name %></title>
-	<link rel="alternate" type="application/rss+xml" title="<%= Site.site_url %> RSS feed" href="<%= feed_url('posts', :format => :rss) %>" />
+	<%= auto_discovery_link_tag(:atom, feed_url('posts', :format => :atom)) %>
 	<%= theme_stylesheet_link_tag 'default' %>
 </head>
 <body<%= " id=\"#{$page_id}\"" unless $page_id.nil? || $page_id.blank? %>>

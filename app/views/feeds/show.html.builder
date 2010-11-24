@@ -3,14 +3,15 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title "#{Site.site_name}"
     xml.description "Syndication for posts from #{Site.site_name}"
-    xml.link feed_url('posts')
+    xml.link feed_url('posts', :format => :rss)
     
     for post in @posts
       xml.item do
         xml.title post.title
         xml.description post.body
         xml.pubDate post.published_at.to_s(:rfc822)
-        xml.link "#{Site.site_url}/#{Site.archive_path}/" + post.permalink
+        xml.link "#{Site.site_url}/#{Site.archive_path}/#{post.permalink}"
+        xml.guid "#{Site.site_url}/#{Site.archive_path}/#{post.permalink}"
       end
     end
   end
