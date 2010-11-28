@@ -60,32 +60,37 @@ class ApplicationController < ActionController::Base
   end
   
   def template_filter(content)
+    # e.g., {{image /image/uploads/image_name.jpg 'alt text' 'class_name' 'id_name'}}
     regex_pattern = /([\{]{2})([\s]{0,1})([a-zA-Z]+\s)(.*)([\s]{0,1})([}]{2})/
-    # regex_pattern = /([\{]{2})([\s]{0,1})([a-zA-Z]+\s)([a-zA-Z0-9\-\_\.]+)(.*)([\s]{0,1})([}]{2})/
     index = 0
     new_content = ''
     match_strings = []
     replace_strings = []
+    
     # scan the content for tags
     content.scan(regex_pattern) do |match|
       match_strings << match.to_s
       tag_type = match[2].strip
       # images
       if tag_type == 'image'
-        image_bits = match[3]
-        image_name = match[3].match(/([a-zA-Z0-9\-\_\.]+)/)[0]
-        attributes = match[3].sub(image_name,'').split(', ')
-        alt_text = attributes[0].lstrip
-        class_names = attributes[1]
-        id_name = attributes[2].strip if !attributes[2].blank?
-        image_tag = build_image_tag(image_name, alt_text, class_names, id_name)
+        image_bits = match[3].split(', ')
+        # image_name = image_bits[0]
+        # alt_text = image_bits[1]
+        # class_names = image_bits[2]
+        # id_name = image_bits[3]
+        if image_bits[3].nil?
+          image_tag = build_image_tag(image_bits[0], image_bits[1], image_bits[2])
+        else
+          image_tag = build_image_tag(image_bits[0], image_bits[1], image_bits[2], image_bits[3])
+        end
         replace_strings << image_tag
       end
       # TODO: other template tag types
     end
+    new_content = content
     unless replace_strings.empty?
-      match_strings.each do |match|
-        new_content = content.sub(match, replace_strings[index])
+      for match in match_strings
+        new_content = new_content.gsub(match_strings[index], replace_strings[index])
         index += 1
       end
     else
@@ -104,14 +109,20 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-  def build_image_tag(image, alt_text, class_name, id_name)
-    image_tag = '<img src="/images/uploads/' + image + '"'
+  def build_image_tag(image, alt_text, class_name=nil, id_name=nil)
+    image_tag = '<img src="'
+    if image.split('/').size > 1
+      image_tag += image
+    else
+      image_tag += '/images/uploads/' + image
+    end
+    image_tag += '"'
     image_tag += ' alt="'
     image_tag += alt_text unless alt_text.match("''")
     image_tag += '"' 
     image_tag += ' class="' + class_name + '"' unless class_name.nil?
     image_tag += ' id="' + id_name + '"' unless id_name.nil?
-    image_tag += ' />'
+    image_tag += " />"
     return image_tag
   end
 end
