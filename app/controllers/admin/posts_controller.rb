@@ -35,6 +35,9 @@ class Admin::PostsController < ApplicationController
       else
         flash[:notice] += " Short URL couldn’t be created."
       end
+      if post.is_active
+        expire_page :controller => :posts, :action => :home
+      end
       redirect_to admin_posts_path
     else
       flash[:error] = "Error creating post. Please try again."
@@ -68,6 +71,9 @@ class Admin::PostsController < ApplicationController
         post.tags = post_tags
       end
       flash[:notice] = "Post saved! Short URL: #{Site.site_url}/p/#{post.short_url}"
+      if post.is_active
+        expire_page :controller => :posts, :action => :home
+      end
       redirect_to params[:return_path]
     else
       flash[:error] = "Error updating post. Please try again. #{post.errors.inspect.to_s}"
