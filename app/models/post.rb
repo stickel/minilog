@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   has_permalink :permalink, :unique => true
   accepts_nested_attributes_for :uploads, :allow_destroy => true, :reject_if => lambda { |i| i['upload'].blank? }
   
-  named_scope :published, { :conditions => ['is_active = ? AND published_at <= ?', true, Time.zone.now] }
+  named_scope :published, lambda { {:conditions => ['is_active = ? AND published_at <= ?', true, Time.zone.now]} }
   named_scope :author, lambda { |a| {:conditions => ['is_active = ? AND author_id = ? AND published_at <= ?',true,a,Time.zone.now], :order => 'published_at DESC'} }
   named_scope :time_period, lambda { |dstart,dend| {:conditions => ['published_at BETWEEN ? AND ?',dstart,dend]} }
   named_scope :recent, lambda { |*n| {:order => 'published_at DESC', :limit => (n.first || 5)} }
