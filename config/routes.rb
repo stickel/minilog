@@ -61,6 +61,9 @@ ActionController::Routing::Routes.draw do |map|
   # "pages"
   map.pages ':permalink', :controller => 'pages', :action => 'show'
   
+  # sitemap
+  map.sitemap 'sitemap.xml', :controller => 'sitemap'
+  
   # default routes
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
