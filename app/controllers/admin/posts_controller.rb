@@ -74,7 +74,11 @@ class Admin::PostsController < ApplicationController
       if post.is_active
         expire_page :controller => :posts, :action => :home
       end
-      redirect_to params[:return_path]
+      if params[:return_path].nil?
+        redirect_to admin_posts_path
+      else
+        redirect_to params[:return_path]
+      end
     else
       flash[:error] = "Error updating post. Please try again. #{post.errors.inspect.to_s}"
       render :action => :edit
