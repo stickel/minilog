@@ -71,9 +71,6 @@ class Admin::PostsController < ApplicationController
         post.tags = post_tags
       end
       flash[:notice] = "Post saved! Short URL: #{Site.site_url}/p/#{post.short_url}"
-      if post.is_active
-        expire_page :controller => :posts, :action => :home
-      end
       if params[:return_path].nil?
         redirect_to admin_posts_path
       else
