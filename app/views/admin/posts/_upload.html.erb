@@ -2,9 +2,10 @@
 	<%= link_to_remove_fields "Remove", f, 'button' %>
 	<p><%= f.label :upload, "Upload image" %>
 		<%= f.file_field :upload %>
+		<span class="upload-file-names"></span>
 	</p>
-	<p><%= f.label :caption, "Image caption" %>
-		<%= f.text_field :caption %>
-		<span class="help">This can be blank</span>
-	</p>
+	<!-- <p><%# f.label :caption, "Image caption" %> -->
+		<%# f.text_field :caption %>
+		<!-- <span class="help">This can be blank</span> -->
+	<!-- </p> -->
 </div>

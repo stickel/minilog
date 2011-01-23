@@ -61,6 +61,8 @@ form .attached_upload { float: left; width: 32%; }
 	form .attached_upload input[type="checkbox"] { float: left; margin-right: 5px; }
 	form .attached_upload .help { margin-left: 0; }
 
+form .upload .upload-file-names { color: #919191; cursor: pointer; display: block; font-size: 80%; margin-left: 91px; }
+
 form #uploads { clear: both; }
 
 body #notice-message,
