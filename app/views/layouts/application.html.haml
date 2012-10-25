@@ -97,15 +97,17 @@
         = csrf_meta_tags
 
     %body= body_class
-
-        -# ==========================================================================
-        -# Content
-        -# ==========================================================================
+        
+        - if flash[:notice]
+          .flash-message.notice
+            = notice
+        - if flash[:alert]
+          .flash-message.alert
+            = alert
 
         = yield
 
         -# JS
-        -# ==========================================================================
         = javascript_include_tag 'application'
 
         -# jQuery
@@ -115,7 +117,6 @@
             window.jQuery || document.write('<script src="/js/jquery-1.7.2.min.js"><\/script>')
 
         -# Custom JS
-
         -# %script{:src => "/js/app.js"}
 
         -#

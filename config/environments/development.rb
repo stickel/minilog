@@ -34,4 +34,8 @@ Minilog::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Set host to your development url, defaults to localhost:3000
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'minilog.dev' }
 end
