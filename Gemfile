@@ -26,6 +26,7 @@ end
 gem 'jquery-rails'
 gem 'devise', '>= 2.1.2'
 gem 'stringex'
+gem 'state_machine'
 
 group :development do
   gem 'haml'
