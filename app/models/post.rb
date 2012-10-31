@@ -24,8 +24,7 @@ class Post < ActiveRecord::Base
     state :deleted, value: 2
 
     after_transition :draft => any - :draft do |post, transition|
-      # TimeZone needs to be set before running this test.
-      post.update_attribute("#{transition.to_name}_at", DateTime.now)
+      post.update_attribute("#{transition.to_name}_at", Time.zone.now)
     end
 
     event :draftize do

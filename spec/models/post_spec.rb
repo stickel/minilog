@@ -32,9 +32,10 @@ describe Post do
     end
 
     it 'can be published' do
+      Timecop.freeze
       @post.publish!
       @post.published?.should be_true
-      @post.published_at.should eq(DateTime.now)
+      @post.published_at.should eq(Time.zone.now)
     end
 
     it 'can become draft after being published' do
