@@ -27,5 +27,14 @@
 capybara-*.html
 **.orig
 
+# Ignore other rails files
+/config/config.yml
+/config/database.yml
+/public/cache
+/public/system
+
+# Mac artifacts
+.DS*
+
 # Ignore pow
 .powrc
