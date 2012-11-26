@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'email_spec'
 require 'rspec/autorun'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -35,4 +36,15 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # FactoryGirl
+  config.include FactoryGirl::Syntax::Methods
+
+  # Devise
+  config.include Devise::TestHelpers, :type => :controller
+  config.include Warden::Test::Helpers, :type => :controller
+
+  # Email spec
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 end
