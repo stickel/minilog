@@ -1,3 +1,103 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'config';
+
+.posts .header-container {
+  .header {
+    @include respond-to(small) {
+      margin: 0;
+      width: 100%;
+    }
+    @include respond-to(large) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 60em;
+    }
+    @include respond-to {
+      margin-left: auto;
+      margin-right: auto;
+      width: 60em;
+    }
+  }
+}
+
+.post-nav {
+  position: absolute;
+  top: 0.82em;
+  right: 0.82em;
+  a {
+  }
+}
+
+.post-list {
+}
+
+
+// Posts#new page styles
+.posts.new {
+  @include respond-to(small) {
+    form, form textarea, form input[type="text"], form input[type="password"] {
+      width: 100%;
+    }
+    #post-main, #post-options {
+      width: 100%;
+    }
+  }
+  @include respond-to(large) {
+    form {
+      width: 60em;
+    }
+    form textarea, form input[type="text"], form input[type="password"] {
+      width: 31em;
+    }
+    #post-main {
+      width: 32em;
+      @include float(left);
+      @include inline-block;
+    }
+    #post-options {
+      width: 26em;
+      @include float(right);
+    }
+  }
+  @include respond-to {
+    form, #post-main {
+      width: 33em;
+    }
+    form textarea, form input[type="text"], form input[type="password"] {
+      width: 31em;
+    }
+    #post-main {
+      width: 32em;
+      @include float(left);
+    }
+    #post-options {
+      width: 26em;
+      @include float(right);
+    }
+  }
+  form {
+    padding-bottom: 1.82em;
+    fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+    fieldset.buttons {
+      @include clear;
+    }
+    textarea, input[type="text"], input[type="password"] {
+      border: 1px solid hsl(0, 0, 90%);
+      margin-bottom: 1.82em;
+      outline: none;
+      padding: 0.455em;
+      @include rounded(3px);
+      &:focus {
+        border-color: hsl(200,80%, 50%);
+        @include box-shadow(hsl(200, 80%, 50%) 0 0 4px);
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+- if signed_in?
+  = render 'layouts/admin_nav'
+
+%section{:role => 'main', :class => 'main-container'}
+  %h2 Posts#home
+  = render 'posts/post_list'

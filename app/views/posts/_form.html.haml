@@ -1,0 +1,8 @@
+= form_for @post do |f|
+  %fieldset#post-main
+    = f.text_field :title, {:placeholder => 'This is your title'}
+    = f.text_area :body, {:placeholder => 'This is your post'}
+  %fieldset#post-options
+    %p These are the options
+  %fieldset.buttons
+    = f.submit :class => 'm-button'

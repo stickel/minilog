@@ -1,0 +1,9 @@
+- if @posts && !@posts.empty?
+  %ol.post-list
+    - @posts.each do |p|
+      %li{:class => 'post', :id => "post-#{p.id}"}
+        %h2.post-title= p.title
+        %p.post-date= p.published_at
+        = p.body
+- else
+  %p= I18n.t('posts.home.no_posts')
