@@ -14,3 +14,8 @@ en:
         delete:
           notice: 'E-yup! That post is history.'
           error: 'D’oh! Could not remove that post.'
+  posts:
+    home:
+      no_posts: 'Sorry, there are currently no posts available.'
+    index:
+      no_posts: 'Sorry, there are currently no posts available.'
