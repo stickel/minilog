@@ -64,5 +64,8 @@ module Minilog
       g.view_specs false
       g.helper_specs false
     end
+
+    # Prevent logging password
+    config.filter_parameters += [:password, :password_confirmation]
   end
 end
