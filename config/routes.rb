@@ -2,6 +2,8 @@ Minilog::Application.routes.draw do
   devise_for :users
 
   root :to => 'posts#home'
+  resources :posts
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
