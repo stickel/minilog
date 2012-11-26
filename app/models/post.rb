@@ -52,4 +52,14 @@ class Post < ActiveRecord::Base
       transition public: :private
     end
   end
+
+  # convenience methods for records
+  def self.published
+    with_state(:published)
+  end
+
+  def self.recent(num)
+    where('published_at <= ?', Time.zone.now).order('published_at DESC').limit(num)
+  end
+
 end

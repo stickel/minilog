@@ -46,8 +46,10 @@ describe Post do
     end
 
     it 'can be deleted' do
+      Timecop.freeze
       @post.delete_it!
       @post.deleted?.should be_true
+      @post.deleted_at.should eq(Time.zone.now)
     end
   end
 
@@ -65,4 +67,45 @@ describe Post do
       @post.private?.should be_true
     end
   end
+
+  context '#published' do
+    it 'returns only published posts' do
+      create_list :post, 3, :published
+      draft = create :post, title: 'this is a draft'
+      Post.published.should_not include(draft)
+      Post.published.count.should eq(3)
+    end
+
+    it 'is empty when it has no posts' do
+      Post.published.count.should eq(0)
+      Post.published.should be_empty
+    end
+  end
+
+  context '#recent' do
+    context 'with posts' do
+      before(:each) do
+        @posts = create_list :post, 4, :published
+      end
+
+      it 'returns latest N number of posts' do
+        posts = Post.recent(4)
+        posts.count.should eq(4)
+        posts.count.should_not eq(3)
+      end
+
+      it 'returns newest posts first' do
+        @posts.sort! { |a, b| a.published_at <=> b.published_at }
+        Post.recent(4).all.should eq(@posts.reverse)
+      end
+    end
+
+    context 'without posts' do
+      it 'returns empty when no posts' do
+        Post.recent(2).count.should eq(0)
+        Post.recent(2).should be_empty
+      end
+    end
+  end
+
 end
