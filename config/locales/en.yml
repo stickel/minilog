@@ -2,4 +2,15 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  flash:
+    actions:
+      post:
+        create:
+          notice: 'Hoorah! Your post has been created.'
+          error: 'Uh oh! Gremlins are chewing on the wires.'
+        update:
+          notice: 'You’re right, this is much better.'
+          error: 'Dang it! Something happened and the post wasn’t updated.'
+        delete:
+          notice: 'E-yup! That post is history.'
+          error: 'D’oh! Could not remove that post.'
