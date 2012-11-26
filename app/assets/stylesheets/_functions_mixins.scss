@@ -1,0 +1,137 @@
+// Functions and mixins
+
+// Simple function to output a width declaration based on number
+// of columns set in the parameter
+// uses: $grid-column-width, $grid-gutter-width
+@function cols($n: 1) {
+  // add code here...
+}
+
+
+// Mixins
+// Responsive breakpoints taken from The Goldilocks Approach
+// http://www.designbyfront.com/demo/goldilocks-approach/
+@mixin respond-to($media: default) {
+  @if $media == small {
+    @media screen and (max-width: 30em) {
+      @content;
+    }
+  } @else if $media == large {
+    @media screen and (min-width: 33.236em) {
+      @content;
+    }
+  } @else if $media == default {
+    @media screen and (min-width: 30em) and (max-width: 63.236em) {
+      @content;
+    }
+  }
+}
+
+// Image Replacement
+// Hides text off to the side and shows the specified background image
+// Height and width are determined by the image dimensions
+@mixin image-replace($image) {
+  @if not $image or $image == '' {
+    @warn "$image needed for replacement to work"
+  } @else {
+    background: image-url($image) no-repeat 0 0;
+    @extend %image-replacement;
+    height: image-height($image);
+    width: image-width($image);
+  }
+}
+
+// With Icon
+// Used to place an icon or image to the left or right of
+// an element. Padding is determined by the image size.
+@mixin with-icon($icon, $side: 'left', $position: '0 0') {
+  @if not $icon or $icon == '' {
+    @warn "No $icon specified"
+  } @else {
+    background: image-url($icon) no-repeat unquote($position);
+    padding-#{side}: floor(image-width($icon) + 5);
+  }
+}
+
+// Builds a grid and grid units under the CSS rule it's included in
+// $gutter defaults to the width set in _variables.scss
+// Responsive breakpoints ala the Goldilocks Approach
+// (http://www.designbyfront.com/demo/goldilocks-approach/)
+// are included in the grid
+@mixin grid($cols: 2, $width: 30em, $gutter: $grid-gutter-width) {
+  $finalWidth: ($width/$cols) - $gutter;
+  width: $width;
+  @extend %clearfix;
+  .unit {
+    @extend %float-left;
+    margin-right: $gutter;
+    width: $finalWidth;
+  }
+  .unit.last {
+    margin-right: 0;
+  }
+  @include respond-to(small) {
+    width: 30em;
+    .unit {
+      float: none;
+      margin-right: 0;
+      width: 30em;
+    }
+  }
+  @include respond-to(large) {
+    width: 60em;
+    .unit {
+      margin-right: $gutter;
+      width: $finalWidth;
+    }
+  }
+}
+
+// Add rounded corners
+@mixin rounded($radius) {
+  @include prefixed(border-radius, $radius);
+}
+
+// Utility mixins
+// prefixed, adds vendor prefixes to the specified property
+@mixin prefixed($property, $value) {
+  @each $prefix in $browser-prefixes {
+    #{$prefix}#{$property}: $value;
+  }
+}
+
+@mixin linear-gradient($start, $color-stops, $image: false) {
+  @if not $start {
+    $start: top;
+  }
+  @each $prefix in $browser-prefixes {
+    @if $image == false {
+      background-image: #{$prefix}linear-gradient($start, $color-stops);
+    } @else {
+      background-image: $image #{$prefix}linear-gradient($start, $color-stops);
+    }
+  }
+}
+
+@mixin box-shadow($shadow...) {
+  @include prefixed(box-shadow, $shadow);
+}
+
+@mixin float($direction: left) {
+  float: $direction;
+}
+
+@mixin clear($side: both) {
+  clear: $side;
+}
+
+@mixin clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+@mixin inline-block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}

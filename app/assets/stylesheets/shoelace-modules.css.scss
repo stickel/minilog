@@ -1,0 +1,65 @@
+// Modules, SMACSS-ish style
+// Include the placeholder styles and variables
+@import 'variables';
+@import 'placeholders';
+
+// Action buttons
+// No Styleguide reference
+.m-button {
+  @include linear-gradient(top, $color-stops: (#eee 55%, $button-bg));
+  border-color: darken($button-bg, 30%);
+  color: $button-text;
+  text-shadow: #fff 0 1px 0;
+  @extend %m-button;
+  @include rounded(1.82em);
+  &:hover {
+    @include linear-gradient(top, $color-stops: (saturate(#eee, 25%) 55%, $button-bg));
+    @include box-shadow(saturate($button-bg, 30%) 0 0 5px);
+  }
+}
+
+.m-button-negative {
+  @include linear-gradient(top, ($button-neg-bg 55%, darken($button-neg-bg, 20%)));
+  border-color: darken($button-neg-bg, 30%);
+  color: $button-neg-text;
+  text-shadow: darken($button-neg-bg, 20%) 0 1px 0;
+  @extend %m-button;
+  @include rounded(1.82em);
+  &:hover {
+    @include linear-gradient(top, (saturate($button-neg-bg, 25%) 55%, darken($button-neg-bg, 20%)));
+    @include box-shadow(saturate($button-neg-bg, 30%) 0 0 5px);
+  }
+}
+
+.m-button-positive {
+  @include linear-gradient(top, ($button-pos-bg 55%, darken($button-pos-bg, 20%)));
+  border-color: darken($button-pos-bg, 30%);
+  color: $button-pos-text;
+  text-shadow: lighten($button-pos-bg, 15%) 0 1px 0;
+  @extend %m-button;
+  @include rounded(1.82em);
+  &:hover {
+    @include linear-gradient(top, (saturate($button-pos-bg, 20%) 55%, darken($button-pos-bg, 20%)));
+    @include box-shadow(saturate($button-pos-bg, 30%) 0 0 5px);
+  }
+}
+
+// Flash messages
+// No Styleguide reference
+.flash-message {
+  &.notice {
+    @extend %flash-message;
+    background: hsla(50, 80%, 50%, 1);
+    border: 1px solid hsla(50, 60%, 40%, 1);
+    color: hsla(50, 60%, 20%, 1);
+    text-shadow: 0 1px 0 hsla(50, 90%, 70%, 1);
+    @include box-shadow(hsla(50, 80%, 20%, 0.5) 0 0 8px);
+  }
+  &.warn {
+    @extend %flash-message;
+  }
+  &.error {
+    @extend %flash-message;
+  }
+}
+

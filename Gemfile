@@ -21,15 +21,16 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'shoelace', :git => 'git://github.com/stickel/shoelace.git'
 end
 
 gem 'jquery-rails'
 gem 'devise', '>= 2.1.2'
 gem 'stringex'
 gem 'state_machine'
+gem 'haml'
 
 group :development do
-  gem 'haml'
   gem 'haml-rails', '>= 0.3.4'
 end
 

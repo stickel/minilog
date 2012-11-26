@@ -1,0 +1,32 @@
+// Layout blocks, SMACSS-ish style
+@import 'variables';
+@import 'placeholders';
+@import 'functions_mixins';
+
+// Containers
+.header-container {
+  margin: 0;
+  width: 100%;
+}
+
+.main-container {
+  // smaller screens
+  @include respond-to(small) {
+    margin: auto;
+    max-width: 30em;
+  }
+  // large screens
+  @include respond-to(large) {
+    margin: 0 auto;
+    max-width: 60em;
+  }
+  // everything else
+  @include respond-to {
+    width: 30em;
+  }
+}
+
+.footer-container {
+  margin: 0;
+  width: 100%;
+}

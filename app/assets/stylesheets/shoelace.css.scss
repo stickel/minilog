@@ -1,0 +1,18 @@
+// Importing the Shoelace variables, functions, and mixins. You can modify or
+// add to Shoelace variables in app/assets/stylesheets/_variables.css.scss
+@import 'variables';
+@import 'functions_mixins';
+
+// Shoelace uses normalize.css as it's reset. You can change this by commenting out the 
+// following line.
+@import 'normalize';
+
+/* =========================================
+   End Normalize
+   ========================================= */
+
+// Shoelace includes a grid system and modules by default. To turn them off or remove
+// them, comment the @import lines below
+@import 'shoelace-layout';
+@import 'shoelace-modules';
+

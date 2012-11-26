@@ -1,0 +1,30 @@
+// Browser prefix variables
+$browser-prefixes: ('-webkit-', '-moz-', '-ms-', '-o-', '');
+
+// Configurable variables, update with your preferences
+
+// Grid widths
+$grid-width: 960px;
+$grid-gutter-width: 1em;
+
+// Font stack
+$font-base: 'Lucida Grand', 'Helvetica Neue', helvetica, arial, sans-serif;
+$font-emphasis: Georgia, 'Times New Roman', serif;
+$font-heading: $font-base;
+$font-heading-alt: $font-emphasis;
+// Font sizing is handled by normalize.css
+
+// Typography
+$line-height-base: 1.5em !default;
+
+// Module variables
+$button-padding: 0.41em 0.75em;
+$button-bg: #aaa;
+$button-text: #222;
+// button modifiers
+// negative action buttons
+$button-neg-bg: #f00;
+$button-neg-text: #fff;
+// positive action buttons
+$button-pos-bg: #45D843;
+$button-pos-text: darken($button-pos-bg, 40%);
