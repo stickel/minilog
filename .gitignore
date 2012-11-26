@@ -38,3 +38,8 @@ capybara-*.html
 
 # Ignore pow
 .powrc
+
+# CodeKit compiled files
+*-ck*
+/public/assets/*.css.css
+**.html.html
